@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @brand.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @brand.description %>
+</p>
+
+<p>
+	<b>Logo:</b>
+	<%= image_tag @brand.logo.url %>
+	<%= image_tag @brand.logo.url(:medium) %>
+	<%= image_tag @brand.logo.url(:thumb) %>
+</p>
+
+
+<%= link_to 'Edit', edit_brand_path(@brand) %> |
+<%= link_to 'Back', brands_path %>
