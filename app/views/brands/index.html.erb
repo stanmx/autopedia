@@ -11,6 +11,7 @@
 
 <% @brands.each do |brand| %>
   <tr>
+    <td><%= image_tag brand.logo.url(:thumb) %></td>
     <td><%= brand.title %></td>
     <td><%= brand.description %></td>
     <td><%= link_to 'Show', brand %></td>

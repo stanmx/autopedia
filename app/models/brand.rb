@@ -1,4 +1,5 @@
 class Brand < ActiveRecord::Base
+  has_many :models
   attr_accessible :description, :title, :logo
 
   #validate
