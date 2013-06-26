@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <title>Autopedia&reg;</title>
+  <%= stylesheet_link_tag    "frontend", :media => "all" %>
+  <%= stylesheet_link_tag    "responsiveslides", :media => "all" %>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Economica|Ubuntu">
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'shared/header' %>
+
+<%= yield %>
+
+<%= render 'shared/additionals' %>
+<%= render 'shared/footer' %>
+
+</body>
+</html>

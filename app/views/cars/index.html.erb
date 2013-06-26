@@ -1,0 +1,55 @@
+<h1><%=t "car.listing_cars" %></h1>
+
+<table>
+  <tr>
+    <th>Photo</th>
+    <th>Model</th>
+    <th>City</th>
+    <th>Year</th>
+    <th>Status</th>
+    <th>Price</th>
+    <th>New</th>
+    <th>Color</th>
+    <th>Interior</th>
+    <th>Transmission</th>
+    <th>Km miles</th>
+    <th>Video</th>
+    <th>Contact name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Radio</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cars.each do |car| %>
+  <tr>
+    <td><%= image_tag car.photos.first.photo.url(:thumb) %></td>
+    <td><%= car.model.title %></td>
+    <td><%= car.city.title %></td>
+    <td><%= car.year %></td>
+    <td><%= car.status %></td>
+    <td><%= car.price %></td>
+    <td><%= car.new %></td>
+    <td><%= car.color %></td>
+    <td><%= car.interior %></td>
+    <td><%= car.transmission %></td>
+    <td><%= car.km_miles %></td>
+    <td><%= car.video %></td>
+    <td><%= car.contact_name %></td>
+    <td><%= car.email %></td>
+    <td><%= car.phone %></td>
+    <td><%= car.radio %></td>
+    <td><%= link_to 'Show', car %></td>
+    <td><%= link_to 'Edit', edit_car_path(car) %></td>
+    <td><%= link_to 'Destroy', car, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Car', new_car_path %> | 
+<%= link_to 'Back to Controls', control_index_path %>
+

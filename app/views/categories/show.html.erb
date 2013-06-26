@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @category.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @category.description %>
+</p>
+
+<p>
+	<b>Icon:</b>
+	<%= image_tag @category.icon.url %>
+	<%= image_tag @category.icon.url(:thumb) %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %> | 
+<%= link_to 'Back to Controls', control_index_path %>

@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  model_id: 1
+  city_id: 1
+  year: MyString
+  status: MyString
+  price: 9.99
+  new: false
+  color: MyString
+  interior: MyString
+  transmission: MyString
+  km_miles: MyString
+  video: MyText
+  contact_name: MyString
+  email: MyString
+  phone: MyString
+  radio: MyString
+
+two:
+  model_id: 1
+  city_id: 1
+  year: MyString
+  status: MyString
+  price: 9.99
+  new: false
+  color: MyString
+  interior: MyString
+  transmission: MyString
+  km_miles: MyString
+  video: MyText
+  contact_name: MyString
+  email: MyString
+  phone: MyString
+  radio: MyString

@@ -1,0 +1,87 @@
+<%= form_for(@company, :html => { :multipart => true }) do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.collection_select :category_id, Category.all, :id, :title, { :prompt => true } %>
+  </div>
+  <div class="field">
+    <%= f.label :city_id %><br />
+    <%= f.collection_select :city_id, City.all, :id, :title, { :prompt => true } %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :warranty %><br />
+    <%= f.check_box :warranty %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :schedule %><br />
+    <%= f.text_field :schedule %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :web %><br />
+    <%= f.text_field :web %>
+  </div>
+  <div class="field">
+    <%= f.label :about %><br />
+    <%= f.text_area :about %>
+  </div>
+  <div class="field">
+    <%= f.label :mision %><br />
+    <%= f.text_area :mision %>
+  </div>
+  <div class="field">
+    <%= f.label :vision %><br />
+    <%= f.text_area :vision %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.fields_for :pictures do |picture_fields| %>
+       <% if picture_fields.object.new_record? %>
+            <p>
+                 <%= picture_fields.file_field :picture %>
+            </p>
+       <% end %> 
+    <% end %>
+
+    <%= f.fields_for :pictures do |picture_fields| %>
+       <% unless picture_fields.object.new_record? %>
+            <p>
+                 <%= link_to image_tag(picture_fields.object.picture.url(:thumb)), picture_fields.object.picture.url(:original) %>
+                 <%= picture_fields.check_box :_destroy %>
+            </p>
+       <% end %> 
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

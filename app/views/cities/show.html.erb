@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>State:</b>
+  <%= @city.state.title %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @city.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @city.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_city_path(@city) %> |
+<%= link_to 'Back', cities_path %> | 
+<%= link_to 'Back to Controls', control_index_path %>

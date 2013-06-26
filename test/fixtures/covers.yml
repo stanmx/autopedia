@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cover_file_name: MyString
+  cover_content_type: MyString
+  cover_file_size: 1
+  cover_updated_at: 2013-06-13 16:39:05
+  magazine_id: 1
+
+two:
+  cover_file_name: MyString
+  cover_content_type: MyString
+  cover_file_size: 1
+  cover_updated_at: 2013-06-13 16:39:05
+  magazine_id: 1

@@ -1,6 +1,30 @@
 Autopedia::Application.routes.draw do
-  resources :models
 
+  resources :videos
+
+
+  resources :magazines
+
+
+  resources :companies
+
+
+  resources :categories
+
+
+  root :to => 'control#index'
+
+  resources :cars
+
+  resources :cities
+
+  resources :states
+
+  resources :countries
+
+  get "control/index"
+
+  resources :models
 
   resources :brands
 

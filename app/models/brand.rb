@@ -1,11 +1,14 @@
 class Brand < ActiveRecord::Base
   has_many :models
-  attr_accessible :description, :title, :logo
+  attr_accessible :description, :title, :logo, :delete_logo
+  attr_accessor :delete_logo
 
   #validate
   validates :title, :logo, :presence => true
 
   #paperclip
-  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :logo, 	:styles 		=> { :medium => "300x300>", 
+  												 :thumb => "100x100>" }#, 
+  							#:default_url 	=> "/images/:style/missing.png"
 
 end

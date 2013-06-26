@@ -1,0 +1,54 @@
+<div id="header">
+
+	<header>
+
+		<div id="topbar">
+			<ul>
+				<li><%= link_to image_tag('facebook.png', :alt => 'Facebook'), 'http://facebook.com/', :target => '_blank' %></li>
+				<li><%= link_to image_tag('twitter.png', :alt => 'Twitter'), 'http://twitter.com/', :target => '_blank' %></li>
+				<li>
+					<form>
+						<input class="search" type="text" placeholder="Buscar en Autopedia">
+						<%= image_submit_tag("search-button.png", :class => 'searchbutton', :alt => 'Buscar') %>
+					</form>
+				</li>
+			</ul>
+		</div><!-- end /#topbar -->
+
+		<div id="title">
+			<h1><%= link_to image_tag('autopedia.png', :alt => 'Autopedia&reg;'), control_index_path %></h1>
+		</div><!-- end /#title -->
+
+		<div id="topbanner">
+			<ul class="rslides">
+				<li><%= link_to image_tag('700x100.jpg', :alt => '700x100'), '#', :target => '_blank' %></li>
+				<li><%= link_to image_tag('700x100two.jpg', :alt => '700x100'), '#', :target => '_blank' %></li>
+			</ul>
+		</div><!-- end /#topbanner -->
+
+		<nav>
+			<ul id="nav">
+				<li class="first"><%= link_to "Inicio", control_index_path %></li>
+				<li><%= link_to "Autos en Venta", cars_path %></li>
+				<li class="first"><%= link_to "Directorio", companies_path %></li>
+				<li>
+					<a title="Medios" href="#">Medios <%= image_tag 'bottom-arrow.png', :alt => 'Mostrar Contenido' %></a>
+					<ul class="noJS">
+						<li><%= link_to "Autopedia&reg; Revista", magazines_path %></li>
+						<li><%= link_to "Autopedia&reg; TV", videos_path %></li>
+					</ul>
+				</li>
+				<li class="first"><%= link_to "Certificate", page_path("certification") %></li>
+				<li>
+					<a title="Contacto" href="contacto">Contacto <%= image_tag 'bottom-arrow.png', :alt => 'Mostrar Contenido' %></a>
+					<ul class="noJS">
+						<li><%= link_to "Ubicación", "#" %></li>
+					</ul>
+				</li>
+			</ul>
+		</nav><!-- end /#nav -->
+
+
+	</header><!-- end header -->
+
+</div><!-- end /#header -->

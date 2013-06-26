@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%=t "country.title" %></b>
+  <%= @country.title %>
+</p>
+
+<p>
+  <b><%=t "country.description" %></b>
+  <%= @country.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_country_path(@country) %> |
+<%= link_to 'Back', countries_path %> | 
+<%= link_to 'Back to Controls', control_index_path %>

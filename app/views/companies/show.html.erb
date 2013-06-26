@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Pictures:</b>
+  <% for picture in @company.pictures %> 
+    <div class="photo">
+      <%= link_to (image_tag picture.picture.url(:thumb), :alt => @company.name, :border => 0), picture.picture.url(:large), :class => 'zoom'  %>
+    </div><!--end picture-->  
+  <% end %>  
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @company.category.title %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @company.city.title %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @company.name %>
+</p>
+
+<p>
+  <b>Warranty:</b>
+  <%= @company.warranty %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @company.address %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @company.phone %>
+</p>
+
+<p>
+  <b>Schedule:</b>
+  <%= @company.schedule %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @company.email %>
+</p>
+
+<p>
+  <b>Web:</b>
+  <%= @company.web %>
+</p>
+
+<p>
+  <b>About:</b>
+  <%= @company.about %>
+</p>
+
+<p>
+  <b>Mision:</b>
+  <%= @company.mision %>
+</p>
+
+<p>
+  <b>Vision:</b>
+  <%= @company.vision %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @company.location %>
+</p>
+
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %> | 
+<%= link_to 'Back to Controls', control_index_path %>

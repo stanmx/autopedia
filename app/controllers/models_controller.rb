@@ -1,6 +1,9 @@
 class ModelsController < ApplicationController
   # GET /models
   # GET /models.json
+
+  layout 'frontend', :only => [:index, :show]
+
   def index
     @models = Model.all
 

@@ -1,0 +1,47 @@
+<h1><%=t "country.listing_countries" %></h1>
+
+<table>
+  <tr>
+    <th><%=t "country.title" %></th>
+    <th><%=t "country.description" %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @countries.each do |country| %>
+  <tr>
+    <td><%= country.title %></td>
+    <td><%= country.description %></td>
+    <td><%= link_to 'Show', country %></td>
+    <td><%= link_to 'Edit', edit_country_path(country) %></td>
+    <td><%= link_to 'Destroy', country, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Country', new_country_path %> | 
+<%= link_to 'Back to Controls', control_index_path %>
+
+<script>
+
+      $(function() {
+
+        //nav
+        $('#nav').find('> li').hover(function(){
+              $(this).find('ul')
+              .removeClass('noJS')
+              .stop(true, true).slideToggle('fast');
+          });
+
+          //topbanner
+          $(".rslides").responsiveSlides({
+              pager: true,
+              namespace: "transparent-btns"
+            });
+
+      });
+
+    </script>

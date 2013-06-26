@@ -1,0 +1,91 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Photos:</b>
+  <% for photo in @car.photos %> 
+    <div class="photo">
+      <%= link_to (image_tag photo.photo.url(:thumb), :alt => @car.model.title, :border => 0), photo.photo.url(:large), :class => 'zoom'  %>
+    </div><!--end productphoto-->  
+  <% end %>  
+</p>
+
+<p>
+  <b>Model:</b>
+  <%= @car.model.title %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @car.city.title %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @car.year %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @car.status %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @car.price %>
+</p>
+
+<p>
+  <b>New:</b>
+  <%= @car.new %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @car.color %>
+</p>
+
+<p>
+  <b>Interior:</b>
+  <%= @car.interior %>
+</p>
+
+<p>
+  <b>Transmission:</b>
+  <%= @car.transmission %>
+</p>
+
+<p>
+  <b>Km miles:</b>
+  <%= @car.km_miles %>
+</p>
+
+<p>
+  <b>Video:</b>
+  <%= @car.video %>
+</p>
+
+<p>
+  <b>Contact name:</b>
+  <%= @car.contact_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @car.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @car.phone %>
+</p>
+
+<p>
+  <b>Radio:</b>
+  <%= @car.radio %>
+</p>
+
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %> | 
+<%= link_to 'Back to Controls', control_index_path %>
+

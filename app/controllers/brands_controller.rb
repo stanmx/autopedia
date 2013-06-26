@@ -1,6 +1,9 @@
 class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json
+
+  layout 'frontend', :only => [:index, :show]
+  
   def index
     @brands = Brand.all
 
@@ -60,6 +63,10 @@ class BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.update_attributes(params[:brand])
+        if params[:brand][:delete_logo]
+          @brand.logo = nil
+          @brand.save
+        end
         format.html { redirect_to @brand, :notice => 'Brand was successfully updated.' }
         format.json { head :no_content }
       else

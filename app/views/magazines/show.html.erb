@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Covers:</b>
+  <% for cover in @magazine.covers %> 
+    <div class="photo">
+      <%= link_to (image_tag cover.cover.url(:large), :alt => @magazine.title, :border => 0), cover.cover.url(:original), :class => 'zoom'  %>
+    </div><!--end picture-->  
+  <% end %>  
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @magazine.number %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @magazine.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @magazine.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_magazine_path(@magazine) %> |
+<%= link_to 'Back', magazines_path %> | 
+<%= link_to 'Back to Controls', control_index_path %>
