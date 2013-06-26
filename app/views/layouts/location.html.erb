@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <title>Autopedia&reg;</title>
+  <%= stylesheet_link_tag    "frontend", :media => "all" %>
+  <%= stylesheet_link_tag    "responsiveslides", :media => "all" %>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Economica|Ubuntu">
+  <%= javascript_include_tag "application" %>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=es"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body onunload="GUnload()">
+
+<%= render 'shared/header' %>
+
+<%= yield %>
+
+<%= render 'shared/additionals' %>
+<%= render 'shared/footer' %>
+<script>
+
+			$(function() {
+
+				//nav
+				$('#nav').find('> li').hover(function(){
+        			$(this).find('ul')
+        			.removeClass('noJS')
+        			.stop(true, true).slideToggle('fast');
+    			});
+
+			    //topbanner
+			    $(".rslides").responsiveSlides({
+			        pager: true,
+        			namespace: "transparent-btns"
+      			});
+
+      			//googlemaps
+				var locations = [['',32.512991,-117.005103, 1]];
+
+				var myLatlng = new google.maps.LatLng(32.154687,-115.776672);
+				var myOptions = {
+					zoom: 8,
+					center: myLatlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				}
+				
+				var map = new google.maps.Map(document.getElementById("map"), myOptions);
+				
+				var infowindow = new google.maps.InfoWindow();
+
+				var marker, i;
+				
+				for (i = 0; i < locations.length; i++) {  
+					marker = new google.maps.Marker({
+				    	position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+				    	map: map
+					});
+
+					google.maps.event.addListener(marker, 'click', (function(marker, i) {
+				    	return function() {
+				        	infowindow.setContent(locations[i][0]);
+				       		infowindow.open(map, marker);
+				        }
+				  	})(marker, i));
+
+				}
+
+			});
+
+		</script>
+</body>
+</html>
