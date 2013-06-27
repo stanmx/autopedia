@@ -1,91 +1,71 @@
-<p id="notice"><%= notice %></p>
+<div id="sitemap">
 
-<p>
-  <b>Photos:</b>
-  <% for photo in @car.photos %> 
+  <div class="center">
+    <p>Inicio &rsaquo; Autos en Venta &rsaquo; <%= @car.year %> <%= @car.model.brand.title %> <%= @car.model.title %></p>
+  </div><!-- end /.center -->
+
+</div><!-- end /#sitemap -->
+
+<div id="content">
+
+  <p id="notice"><%= notice %></p>
+
+  <div id="introduction">
+
+    <section id="video">
+      <%= @car.video.html_safe %>
+    </section><!-- end /#video -->
+
+    <section id="details">
+      <h2><%= @car.year %> <%= @car.model.brand.title %> <%= @car.model.title %> (<%= humanize_bool(@car.new) %>)</h2>
+      <ul>
+        <li><span>Marca:</span> <%= @car.model.brand.title %></li>
+        <li class="two"><span>Modelo:</span> <%= @car.model.title %></li>
+        <li><span>Año:</span> <%= @car.year %></li>
+        <li class="two"><span>Exterior:</span> <%= @car.color %></li>
+        <li><span>Interior:</span> <%= @car.interior %></li>
+        <li class="two"><span>Transmisión:</span> <%= @car.transmission %></li>
+        <li><span>KM/Millas:</span>  <%= @car.km_miles %></li>
+        <li class="two"><span>Estatus:</span> <%= @car.status %></li>
+        <li><span>Precio:</span> <%= @car.price %> pesos</li>
+      </ul>
+      <h4>Contacto</h4>
+      <ul>
+        <li class="two"><span>Propietario:</span> <%= @car.contact_name %></li>
+        <li><span>Email:</span> <a title="Email" href="mailto:<%= @car.email %>"><%= @car.email %></a></li>
+        <li class="two"><span>Teléfono:</span> <%= @car.phone %></li>
+        <li><span>Radio:</span> <%= @car.radio %></li>
+        <li class="two"><span>Ubicación:</span> <%= @car.city.title %></li>
+      </ul>
+    </section><!-- end /#details -->
+
+     <% for photo in @car.photos %> 
     <div class="photo">
       <%= link_to (image_tag photo.photo.url(:thumb), :alt => @car.model.title, :border => 0), photo.photo.url(:large), :class => 'zoom'  %>
     </div><!--end productphoto-->  
   <% end %>  
-</p>
 
-<p>
-  <b>Model:</b>
-  <%= @car.model.title %>
-</p>
+  <%= link_to 'Edit', edit_car_path(@car) %> |
+  <%= link_to 'Back', cars_path %> | 
+  <%= link_to 'Back to Controls', control_index_path %>
 
-<p>
-  <b>City:</b>
-  <%= @car.city.title %>
-</p>
+  </div><!-- end /#introduction -->
 
-<p>
-  <b>Year:</b>
-  <%= @car.year %>
-</p>
+  <%= render 'shared/newsletter' %>
 
-<p>
-  <b>Status:</b>
-  <%= @car.status %>
-</p>
+  <div id="middlebanners">
+    <ul>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+    </ul>
+  </div><!-- end /#middlebanners -->
 
-<p>
-  <b>Price:</b>
-  <%= @car.price %>
-</p>
+  <?php include("shared/results.php"); ?>
 
-<p>
-  <b>New:</b>
-  <%= @car.new %>
-</p>
+  <div id="sidebar">
 
-<p>
-  <b>Color:</b>
-  <%= @car.color %>
-</p>
+    <%= render 'shared/searchside' %>
 
-<p>
-  <b>Interior:</b>
-  <%= @car.interior %>
-</p>
+  </div><!-- end /#sidebar -->
 
-<p>
-  <b>Transmission:</b>
-  <%= @car.transmission %>
-</p>
-
-<p>
-  <b>Km miles:</b>
-  <%= @car.km_miles %>
-</p>
-
-<p>
-  <b>Video:</b>
-  <%= @car.video %>
-</p>
-
-<p>
-  <b>Contact name:</b>
-  <%= @car.contact_name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @car.email %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @car.phone %>
-</p>
-
-<p>
-  <b>Radio:</b>
-  <%= @car.radio %>
-</p>
-
-
-<%= link_to 'Edit', edit_car_path(@car) %> |
-<%= link_to 'Back', cars_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
-
+</div><!-- end /#content -->

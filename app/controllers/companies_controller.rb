@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
 
-  layout 'frontend', :only => [:index, :show]
+  layout 'companies', :only => [:index, :show]
 
   def index
     @companies = Company.all

@@ -1,50 +1,74 @@
-<h1>Listing companies</h1>
+<div id="sitemap">
 
-<table>
-  <tr>
-    <th>Pictures</th>
-    <th>Category</th>
-    <th>City</th>
-    <th>Name</th>
-    <th>Warranty</th>
-    <th>Address</th>
-    <th>Phone</th>
-    <th>Schedule</th>
-    <th>Email</th>
-    <th>Web</th>
-    <th>About</th>
-    <th>Mision</th>
-    <th>Vision</th>
-    <th>Location</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <div class="center">
+        <p>Inicio &rsaquo; Directorio</p>
+    </div><!-- end /.center -->
 
-<% @companies.each do |company| %>
-  <tr>
-    <td><%= image_tag company.pictures.first.picture.url(:thumb) %></td>
-    <td><%= company.category.title %></td>
-    <td><%= company.city.title %></td>
-    <td><%= company.name %></td>
-    <td><%= company.warranty %></td>
-    <td><%= company.address %></td>
-    <td><%= company.phone %></td>
-    <td><%= company.schedule %></td>
-    <td><%= company.email %></td>
-    <td><%= company.web %></td>
-    <td><%= company.about %></td>
-    <td><%= company.mision %></td>
-    <td><%= company.vision %></td>
-    <td><%= company.location %></td>
-    <td><%= link_to 'Show', company %></td>
-    <td><%= link_to 'Edit', edit_company_path(company) %></td>
-    <td><%= link_to 'Destroy', company, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+</div><!-- end /#sitemap -->
 
-<br />
+<div id="content">
 
-<%= link_to 'New Company', new_company_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+    <div id="map"></div><!-- end /#map -->
+
+    <div id="mapsearch">
+        <ul>
+            <li class="tip">Encuentra de todo para tu auto &rarr;</li>
+            <li>
+                <form>
+                    <input type="text" placeholder="¿Buscas un auto? Encuentralo aquí" class="inputbold" />
+                    <input type="submit" value="Buscar" class="submitbold" />
+                </form>
+            </li>
+        </ul>
+    </div><!-- end /#mapsearch -->
+
+    <section id="carrousel">
+        <h3>Para buscar por categoría, selecciona un icono del directorio de negocios de Autopedia.mx</h3>
+        <a href="#"><img class="prev" alt="Preview" src="<%= image_path('left-arrow.png') %>" /></a>
+        <a href="#"><img class="next" alt="Next" src="<%= image_path('right-arrow.png') %>" /></a>
+        <ul>
+            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
+            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
+            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
+            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
+            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
+            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
+            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
+            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
+            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
+        </ul>
+    </section><!-- end /#carrousel -->
+
+    <div id="results">
+
+        <h2>(<%= @companies.count %>) Resultado<% if @companies.count >= 2 %>s<% end %></h2>
+        <ul class="filters">
+            <li><span>Filtros:</span></li>
+            <li><a title="Todos" href="#">Todos</a></li>
+            <li><a title="Nuevos" href="#">Garantía</a></li>
+            <li><a title="Usados" href="#">No garantía</a></li>
+        </ul>
+
+        <% @companies.each do |company| %>
+        <div class="result">
+            <a title="Mercado de Refacciones" href="<%= company_path(company) %>">
+                <%= image_tag company.pictures.first.picture.url(:thumb) %>
+                <h3><%= company.name %> <span>ID <%= company.id %></span> <span><%= humanize_bool(company.warranty) %></span> <span><%= company.category.title %></span></h3>
+                <p><%= company.about.first(160) %>...</p>
+            </a>
+        </div><!-- end /.result -->
+
+        <p><%= link_to 'Show', company %> | <%= link_to 'Edit', edit_company_path(company) %> | <%= link_to 'Destroy', company, :method => :delete, :data => { :confirm => 'Are you sure?' } %></p>
+        <% end %>
+
+        <%= link_to 'New Company', new_company_path %> | 
+        <%= link_to 'Back to Controls', control_index_path %>
+    </div><!-- end /#results -->
+
+    <div id="sidebar">
+
+        <%= render 'shared/searchside' %>
+
+    </div><!-- end /#sidebar -->
+
+</div><!-- end /#content -->

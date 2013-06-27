@@ -68,7 +68,7 @@
 
     <div id="results">
 
-        <h2>(<%= @cars.count %>) Resultados</h2>
+        <h2>(<%= @cars.count %>) Resultado<% if @cars.count >= 2 %>s<% end %></h2>
         <ul class="filters">
             <li><span>Filtros:</span></li>
             <li><a title="Todos" href="#">Todos</a></li>
@@ -81,19 +81,18 @@
         <div class="result">
             <a title="<%= car.model.title %>" href="<%= car_path(car) %>">
                 <%= image_tag car.photos.first.photo.url(:thumb) %>
-                <h3><%= car.year %> <%= car.model.brand.title %> <%= car.model.title %> <span>ID <%= car.id %></span> <span><%= car.price %> <abbr title="Moneda Nacional">M.N.</abbr></span> <span><%= car.new %></span> <span><%= l car.updated_at, :format => :short %></span></h3>
-                <p>Estatus: <%= car.status %>, Color: <%= car.color %>, Interior: <%= car.interior %>, Transmisión: <%= car.transmission %>, Kilometraje: <%= car.km_miles %>, Contacto: <%= car.contact_name %>, Correo Electrónico: <%= car.email %>, Teléfono: <%= car.phone %>...</p>
+                <h3><%= car.year %> <%= car.model.brand.title %> <%= car.model.title %> <span>ID <%= car.id %></span> <span><%= car.price %> <abbr title="Moneda Nacional">M.N.</abbr></span> <span><%= humanize_bool(car.new) %></span> <span><%= l car.updated_at, :format => :short %></span></h3>
+                <p>Estatus: <%= car.status %>, Color: <%= car.color %>, Interior: <%= car.interior %>, Transmisión: <%= car.transmission %>, Kilometraje: <%= car.km_miles %>...</p>
                 <h5><%= car.photos.count %></h5>
             </a>
         </div><!-- end /.result -->
 
-   
-    <td><%= link_to 'Show', car %></td>
-    <td><%= link_to 'Edit', edit_car_path(car) %></td>
-    <td><%= link_to 'Destroy', car, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
+        <p><%= link_to 'Show', car %> | <%= link_to 'Edit', edit_car_path(car) %> | <%= link_to 'Destroy', car, :method => :delete, :data => { :confirm => 'Are you sure?' } %></p>
 
         <% end %>
+
+        <%= link_to 'New Car', new_car_path %> | 
+        <%= link_to 'Back to Controls', control_index_path %>
 
     </div><!-- end /#results -->
 
@@ -106,6 +105,5 @@
 </div><!-- end /#content -->
 
 
-<%= link_to 'New Car', new_car_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+
 

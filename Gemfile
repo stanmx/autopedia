@@ -12,6 +12,7 @@ gem 'json'
 # my gems
 gem "paperclip", "2.7"
 gem "high_voltage"
+gem "cocaine", "0.3.2"
 #gem 'pry', :group => :development
 
 # Gems used only for assets and not required
