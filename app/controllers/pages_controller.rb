@@ -2,6 +2,9 @@ class PagesController < ApplicationController
 
 	layout 'frontend'
 
+	def home
+	end
+
 	def certification
 	end
 

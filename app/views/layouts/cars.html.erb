@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <title>Autopedia&reg;</title>
+  <%= stylesheet_link_tag    "frontend", :media => "all" %>
+  <%= stylesheet_link_tag    "responsiveslides", :media => "all" %>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Economica|Ubuntu">
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render 'shared/header' %>
+
+<%= yield %>
+
+<%= render 'shared/additionals' %>
+<%= render 'shared/footer' %>
+
+		<script>
+
+			$(function() {
+
+				//nav
+				$('#nav').find('> li').hover(function(){
+        			$(this).find('ul')
+        			.removeClass('noJS')
+        			.stop(true, true).slideToggle('fast');
+    			});
+
+			    //topbanner
+			    $(".rslides").responsiveSlides({
+			        pager: true,
+        			namespace: "transparent-btns"
+      			});
+
+			    //boxes
+      			$('#showbox1').on('click',function(){
+      				$('div[id^=box]').hide();
+            		$('#box1').show();
+        		});
+
+        		$('#showbox2').on('click',function(){
+      				$('div[id^=box]').hide();
+            		$('#box2').show();
+        		});
+
+        		$('#showbox3').on('click',function(){
+      				$('div[id^=box]').hide();
+            		$('#box3').show();
+        		});
+
+        		$('#showbox4').on('click',function(){
+      				$('div[id^=box]').hide();
+            		$('#box4').show();
+        		});
+
+        		$('#showbox5').on('click',function(){
+      				$('div[id^=box]').hide();
+            		$('#box5').show();
+        		});
+
+        		$('#showbox6').on('click',function(){
+      				$('div[id^=box]').hide();
+            		$('#box6').show();
+        		});
+
+        		$(".cerrar").on('click',function(){
+            		$(".optionbox").hide();
+        		});
+
+			});
+
+		</script>
+</body>
+</html>

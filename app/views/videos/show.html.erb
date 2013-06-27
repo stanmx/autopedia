@@ -1,22 +1,83 @@
-<p id="notice"><%= notice %></p>
+<div id="sitemap">
 
-<p>
-  <b>Title:</b>
-  <%= @video.title %>
-</p>
+  <div class="center">
+    <p>Inicio &rsaquo; TV</p>
+  </div><!-- end /.center -->
 
-<p>
-  <b>Video:</b>
-  <%= @video.video %>
-</p>
+</div><!-- end /#sitemap -->
 
-<p>
-  <b>Description:</b>
-  <%= @video.description %>
-</p>
+<div id="content">
 
+  <div id="magazines" class="others">
 
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+    <h2>Autopedia&reg; TV</h2>
+    <h4>Mantente al tanto de lo que sucede en <b>Autopedia&reg; TV</b></h4>
 
+    <p id="notice"><%= notice %></p>
+    
+    <section id="tvnow">
+      <%= @video.video.html_safe %>
+    
+      <section class="share">
+        <%= image_tag 'shared-buttons.png', :alt => 'Compartir' %>
+      </section>
+
+      <h3><%= @video.title %></h3>
+      <h5><%= l @video.created_at, :formats => :long %></h5>
+      <p><%= @video.description %></p>     
+
+      <%= link_to 'Edit', edit_video_path(@video) %> | <%= link_to 'Back', videos_path %>
+
+    </section><!-- end /#tvnow -->
+
+    <section id="tvothers">
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+    </section><!-- end /#tvothers -->
+
+    <%= link_to 'Back to Controls', control_index_path %>
+
+  </div><!-- end /#text -->
+
+  <div id="sidebar">
+
+    <%= render 'shared/bannerside' %>
+    <%= render 'shared/searchside' %>
+
+  </div><!-- end /#sidebar -->
+
+  <div id="middlebanners">
+    <ul>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+    </ul>
+  </div><!-- end /#middlebanners -->
+
+</div><!-- end /#content -->

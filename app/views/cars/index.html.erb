@@ -1,54 +1,110 @@
-<h1><%=t "car.listing_cars" %></h1>
+<div id="sitemap">
 
-<table>
-  <tr>
-    <th>Photo</th>
-    <th>Model</th>
-    <th>City</th>
-    <th>Year</th>
-    <th>Status</th>
-    <th>Price</th>
-    <th>New</th>
-    <th>Color</th>
-    <th>Interior</th>
-    <th>Transmission</th>
-    <th>Km miles</th>
-    <th>Video</th>
-    <th>Contact name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Radio</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <div class="center">
+        <p>Inicio &rsaquo; Autos en Venta</p>
+    </div><!-- end /.center -->
 
-<% @cars.each do |car| %>
-  <tr>
-    <td><%= image_tag car.photos.first.photo.url(:thumb) %></td>
-    <td><%= car.model.title %></td>
-    <td><%= car.city.title %></td>
-    <td><%= car.year %></td>
-    <td><%= car.status %></td>
-    <td><%= car.price %></td>
-    <td><%= car.new %></td>
-    <td><%= car.color %></td>
-    <td><%= car.interior %></td>
-    <td><%= car.transmission %></td>
-    <td><%= car.km_miles %></td>
-    <td><%= car.video %></td>
-    <td><%= car.contact_name %></td>
-    <td><%= car.email %></td>
-    <td><%= car.phone %></td>
-    <td><%= car.radio %></td>
+</div><!-- end /#sitemap -->
+
+<div id="content">
+
+    <div id="introduction">
+
+        <section id="menu">
+            <h4>Auto Busqueda</h4>
+            <ul>
+                <li><a id="showbox1" title="Marca" href="#">Marca</a></li>
+                <li><a id="showbox2" title="Modelo" href="#">Modelo</a></li>
+                <li><a id="showbox3" title="Año" href="#">Año</a></li>
+                <li><a id="showbox4" title="Estatus" href="#">Estatus</a></li>
+                <li><a id="showbox5" title="Ubicación" href="#">Ubicación</a></li>
+                <li><a id="showbox6" title="Precio" href="#">Precio</a></li>
+            </ul>
+        </section><!-- end /#menu -->
+
+        <section id="brands">
+            <h4>Marcas Destacadas</h4>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+        </section><!-- end /#brands -->
+
+        <section id="introbanners">
+            <section>
+                <ul class="rslides">
+                    <li><%= link_to image_tag('450x150.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
+                    <li><%= link_to image_tag('450x150two.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
+                </ul>
+            </section>
+            <section>
+                <ul class="rslides">
+                    <li><%= link_to image_tag('450x150.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
+                    <li><%= link_to image_tag('450x150two.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
+                </ul>
+            </section>
+        </section><!-- end /#introbanners -->
+
+        <%= render 'shared/boxes' %>
+
+    </div><!-- end /#introduction -->
+
+    <%= render 'shared/newsletter' %>
+
+    <div id="middlebanners">
+        <ul>
+            <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+            <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+        </ul>
+    </div><!-- end /#middlebanners -->
+
+    <div id="results">
+
+        <h2>(<%= @cars.count %>) Resultados</h2>
+        <ul class="filters">
+            <li><span>Filtros:</span></li>
+            <li><a title="Todos" href="#">Todos</a></li>
+            <li><a title="Nuevos" href="#">Nuevos</a></li>
+            <li><a title="Usados" href="#">Usados</a></li>
+            <li><a title="Precio" href="#">Precio</a></li>
+        </ul>
+
+        <% @cars.each do |car| %>
+        <div class="result">
+            <a title="<%= car.model.title %>" href="<%= car_path(car) %>">
+                <%= image_tag car.photos.first.photo.url(:thumb) %>
+                <h3><%= car.year %> <%= car.model.brand.title %> <%= car.model.title %> <span>ID <%= car.id %></span> <span><%= car.price %> <abbr title="Moneda Nacional">M.N.</abbr></span> <span><%= car.new %></span> <span><%= l car.updated_at, :format => :short %></span></h3>
+                <p>Estatus: <%= car.status %>, Color: <%= car.color %>, Interior: <%= car.interior %>, Transmisión: <%= car.transmission %>, Kilometraje: <%= car.km_miles %>, Contacto: <%= car.contact_name %>, Correo Electrónico: <%= car.email %>, Teléfono: <%= car.phone %>...</p>
+                <h5><%= car.photos.count %></h5>
+            </a>
+        </div><!-- end /.result -->
+
+   
     <td><%= link_to 'Show', car %></td>
     <td><%= link_to 'Edit', edit_car_path(car) %></td>
     <td><%= link_to 'Destroy', car, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
   </tr>
-<% end %>
-</table>
 
-<br />
+        <% end %>
+
+    </div><!-- end /#results -->
+
+    <div id="sidebar">
+
+        <%= render 'shared/searchside' %>
+
+    </div><!-- end /#sidebar -->
+
+</div><!-- end /#content -->
+
 
 <%= link_to 'New Car', new_car_path %> | 
 <%= link_to 'Back to Controls', control_index_path %>

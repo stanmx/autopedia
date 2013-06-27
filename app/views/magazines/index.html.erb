@@ -1,30 +1,49 @@
-<h1>Listing magazines</h1>
+<div id="sitemap">
 
-<table>
-  <tr>
-    <th>Cover</th>
-    <th>Number</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div class="center">
+    <p>Inicio &rsaquo; Revista</p>
+  </div><!-- end /.center -->
 
-<% @magazines.each do |magazine| %>
-  <tr>
-    <td><%= image_tag magazine.covers.first.cover.url(:large) %></td>
-    <td><%= magazine.number %></td>
-    <td><%= magazine.title %></td>
-    <td><%= magazine.description %></td>
-    <td><%= link_to 'Show', magazine %></td>
-    <td><%= link_to 'Edit', edit_magazine_path(magazine) %></td>
-    <td><%= link_to 'Destroy', magazine, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+</div><!-- end /#sitemap -->
 
-<br />
+<div id="content">
 
-<%= link_to 'New Magazine', new_magazine_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+  <div id="magazines" class="others">
+
+    <h2>Autopedia&reg; Revista</h2>
+    <h4>Descarga nuestra revista mensual <b>Autopedia&reg; Revista</b>.</h4>
+    
+    <% @magazines.each do |magazine| %>
+      <section class="magazine">
+        <%= image_tag magazine.covers.first.cover.url(:large) %>
+        <h3>Revista #<%= magazine.number %></h3>
+        <h4><%= magazine.title %></h4>
+        <p><%= magazine.description %></p>
+        <h5><%= link_to 'Descargar', magazine.covers.first.cover.url(:original), :target => '_blank' %></h5>  
+        <h5><%= link_to 'Show', magazine %></h5>
+        <h5><%= link_to 'Edit', edit_magazine_path(magazine) %></h5>
+        <h5><%= link_to 'Destroy', magazine, :method => :delete, :data => { :confirm => 'Are you sure?' } %></h5>
+      </section><!-- end /.magazine -->
+      <% end %>
+      <br />
+
+      <%= link_to 'New Magazine', new_magazine_path %> | 
+      <%= link_to 'Back to Controls', control_index_path %>
+
+  </div><!-- end /#text -->
+
+  <div id="sidebar">
+
+    <%= render 'shared/bannerside' %>
+    <%= render 'shared/searchside' %>
+
+  </div><!-- end /#sidebar -->
+
+  <div id="middlebanners">
+    <ul>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+    </ul>
+  </div><!-- end /#middlebanners -->
+
+</div><!-- end /#content -->

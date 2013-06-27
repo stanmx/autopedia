@@ -2,7 +2,7 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
 
-  layout 'frontend', :only => [:index, :show]
+  layout 'cars', :only => [:index, :show]
 
   def index
     @cars = Car.all

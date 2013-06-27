@@ -1,5 +1,6 @@
 Autopedia::Application.routes.draw do
 
+  get "/pages/home" => 'pages#home', :as => :page, :format => false
   get "/pages/certification" => 'pages#certification', :as => :page, :format => false
   get "/pages/contact" => 'pages#contact', :as => :page, :format => false
   get "/pages/location" => 'pages#location', :as => :page, :format => false

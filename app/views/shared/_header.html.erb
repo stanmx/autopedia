@@ -16,7 +16,7 @@
 		</div><!-- end /#topbar -->
 
 		<div id="title">
-			<h1><%= link_to image_tag('autopedia.png', :alt => 'Autopedia&reg;'), control_index_path %></h1>
+			<h1><%= link_to image_tag('autopedia.png', :alt => 'Autopedia®'), control_index_path %></h1>
 		</div><!-- end /#title -->
 
 		<div id="topbanner">
@@ -28,14 +28,14 @@
 
 		<nav>
 			<ul id="nav">
-				<li class="first"><%= link_to "Inicio", control_index_path %></li>
+				<li class="first"><%= link_to "Inicio", page_path("home") %></li>
 				<li><%= link_to "Autos en Venta", cars_path %></li>
 				<li class="first"><%= link_to "Directorio", companies_path %></li>
 				<li>
 					<a title="Medios" href="#">Medios <%= image_tag 'bottom-arrow.png', :alt => 'Mostrar Contenido' %></a>
 					<ul class="noJS">
-						<li><%= link_to "Autopedia&reg; Revista", magazines_path %></li>
-						<li><%= link_to "Autopedia&reg; TV", videos_path %></li>
+						<li><%= link_to "Autopedia® Revista", magazines_path %></li>
+						<li><%= link_to "Autopedia® TV", videos_path %></li>
 					</ul>
 				</li>
 				<li class="first"><%= link_to "Certificate", page_path("certification") %></li>

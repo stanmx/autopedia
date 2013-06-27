@@ -1,29 +1,85 @@
-<h1>Listing videos</h1>
+<div id="sitemap">
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Video</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div class="center">
+    <p>Inicio &rsaquo; TV</p>
+  </div><!-- end /.center -->
 
-<% @videos.each do |video| %>
-  <tr>
-    <td><%= video.title %></td>
-    <td><%= video.video %></td>
-    <td><%= video.description %></td>
-    <td><%= link_to 'Show', video %></td>
-    <td><%= link_to 'Edit', edit_video_path(video) %></td>
-    <td><%= link_to 'Destroy', video, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+</div><!-- end /#sitemap -->
 
-<br />
+<div id="content">
 
-<%= link_to 'New Video', new_video_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+  <div id="magazines" class="others">
 
+    <h2>Autopedia&reg; TV</h2>
+    <h4>Mantente al tanto de lo que sucede en <b>Autopedia&reg; TV</b></h4>
+    
+    <% @videos.each do |video| %>
+    <section id="tvnow">
+      <%= video.video.html_safe %>
+    
+      <section class="share">
+        <%= image_tag 'shared-buttons.png', :alt => 'Compartir' %>
+      </section>
+
+      <h3><%= video.title %></h3>
+      <h5><%= l video.created_at, :formats => :long %></h5>
+      <p><%= video.description %></p>     
+
+       <%= link_to 'Show', video %> | <%= link_to 'Edit', edit_video_path(video) %> | <%= link_to 'Destroy', video, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+
+    </section><!-- end /#tvnow -->
+
+    <% end %>
+
+    <section id="tvothers">
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+    </section><!-- end /#tvothers -->
+
+    <%= link_to 'New Video', new_video_path %> | 
+    <%= link_to 'Back to Controls', control_index_path %>
+
+  </div><!-- end /#text -->
+
+  <div id="sidebar">
+
+    <%= render 'shared/bannerside' %>
+    <%= render 'shared/searchside' %>
+
+  </div><!-- end /#sidebar -->
+
+  <div id="middlebanners">
+    <ul>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+    </ul>
+  </div><!-- end /#middlebanners -->
+
+</div><!-- end /#content -->

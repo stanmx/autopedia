@@ -1,30 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div id="sitemap">
 
-<p>
-  <b>Covers:</b>
-  <% for cover in @magazine.covers %> 
-    <div class="photo">
-      <%= link_to (image_tag cover.cover.url(:large), :alt => @magazine.title, :border => 0), cover.cover.url(:original), :class => 'zoom'  %>
-    </div><!--end picture-->  
-  <% end %>  
-</p>
+  <div class="center">
+    <p>Inicio &rsaquo; Revista</p>
+  </div><!-- end /.center -->
 
-<p>
-  <b>Number:</b>
-  <%= @magazine.number %>
-</p>
+</div><!-- end /#sitemap -->
 
-<p>
-  <b>Title:</b>
-  <%= @magazine.title %>
-</p>
+<div id="content">
 
-<p>
-  <b>Description:</b>
-  <%= @magazine.description %>
-</p>
+  <div id="magazines" class="others">
 
+    <h2>Autopedia&reg; Revista</h2>
+    <h4>Descarga nuestra revista mensual <b>Autopedia&reg; Revista</b>.</h4>
 
-<%= link_to 'Edit', edit_magazine_path(@magazine) %> |
-<%= link_to 'Back', magazines_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+    <p id="notice"><%= notice %></p>
+
+    <section class="magazine">
+      <% for cover in @magazine.covers %> 
+        <%= image_tag(cover.cover.url(:large), :alt => @magazine.title, :border => 0) %>
+      <% end %>  
+      <h3>Revista #<%= @magazine.number %></h3>
+      <h4><%= @magazine.title %></h4>
+      <p><%= @magazine.description %></p>
+      <h5><%= link_to 'Descargar', @magazine.covers.first.cover.url(:original), :target => '_blank' %></h5>  
+      <h5><%= link_to 'Back', magazines_path %></h5>
+      <h5><%= link_to 'Edit', edit_magazine_path(@magazine) %></h5>
+    </section><!-- end /.magazine -->
+    <br />
+
+    <%= link_to 'Back to Controls', control_index_path %>
+
+  </div><!-- end /#text -->
+
+  <div id="sidebar">
+
+    <%= render 'shared/bannerside' %>
+    <%= render 'shared/searchside' %>
+
+  </div><!-- end /#sidebar -->
+
+  <div id="middlebanners">
+    <ul>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+    </ul>
+  </div><!-- end /#middlebanners -->
+
+</div><!-- end /#content -->
