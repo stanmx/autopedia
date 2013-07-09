@@ -8,16 +8,24 @@
 
 <div id="content">
 
-    <div id="map"></div><!-- end /#map -->
+    <%= gmaps(:map_options => { :raw => "{styles: myStyle}" }, 
+                                :markers => { :data => @json }) %>
+
+    <script type="text/javascript" charset="utf-8">
+    var myStyle = [ 
+        { featureType: "all", stylers: [{ "hue": "#C71514" } ]} 
+    ];
+    </script>
 
     <div id="mapsearch">
         <ul>
             <li class="tip">Encuentra de todo para tu auto &rarr;</li>
             <li>
-                <form>
-                    <input type="text" placeholder="¿Buscas un auto? Encuentralo aquí" class="inputbold" />
-                    <input type="submit" value="Buscar" class="submitbold" />
+                <%= form_tag companies_path, :method => :get do %>
+                    <%= text_field_tag :search, params[:search], :placeholder => "¿Buscas un auto? Encuentralo aquí?", :class => "inputbold" %>
+                    <%= submit_tag "Buscar", :name => nil, :class => "submitbold" %>
                 </form>
+            <% end %>
             </li>
         </ul>
     </div><!-- end /#mapsearch -->
@@ -27,38 +35,32 @@
         <a href="#"><img class="prev" alt="Preview" src="<%= image_path('left-arrow.png') %>" /></a>
         <a href="#"><img class="next" alt="Next" src="<%= image_path('right-arrow.png') %>" /></a>
         <ul>
-            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
-            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
-            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
-            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
-            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
-            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
-            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
-            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
-            <li><%= link_to image_tag('talleres-icon.png', :alt => 'Talleres'), '#' %></li>
+            <% @categories.each do |category| %>
+                <li><%= link_to image_tag(category.icon.url(:thumb), :alt => category.title), companies_path(:search => category.title) %></li>
+            <% end %>
+            
         </ul>
     </section><!-- end /#carrousel -->
 
     <div id="results">
 
-        <h2>(<%= @companies.count %>) Resultado<% if @companies.count >= 2 %>s<% end %></h2>
+        <h2>(<%= @companies.count %>) Resultado<% if @companies.count >= 2 || @companies.count == 0 %>s<% end %></h2>
         <ul class="filters">
             <li><span>Filtros:</span></li>
-            <li><a title="Todos" href="#">Todos</a></li>
-            <li><a title="Nuevos" href="#">Garantía</a></li>
-            <li><a title="Usados" href="#">No garantía</a></li>
+            <li><%= link_to "Todos", companies_path(:search => :all) %></li>
+            <li><%= link_to "Garantía", '#', :id => 'warrantytrue' %></li>
+            <li><%= link_to "No Garantía", '#', :id => 'warrantyfalse' %></li>
         </ul>
 
         <% @companies.each do |company| %>
-        <div class="result">
+        <div class="result <%= 'warrantytrue' if company.warranty == true %> <%= 'warrantyfalse' if company.warranty == false %>" >
             <a title="Mercado de Refacciones" href="<%= company_path(company) %>">
                 <%= image_tag company.pictures.first.picture.url(:thumb) %>
                 <h3><%= company.name %> <span>ID <%= company.id %></span> <span><%= humanize_bool(company.warranty) %></span> <span><%= company.category.title %></span></h3>
-                <p><%= company.about.first(160) %>...</p>
+                <p><%= truncate(company.about, :lenght => 160, :separator => ' ') %></p>
             </a>
+            <p><%= link_to 'Show', company %> | <%= link_to 'Edit', edit_company_path(company) %> | <%= link_to 'Destroy', company, :method => :delete, :data => { :confirm => 'Are you sure?' } %></p>
         </div><!-- end /.result -->
-
-        <p><%= link_to 'Show', company %> | <%= link_to 'Edit', edit_company_path(company) %> | <%= link_to 'Destroy', company, :method => :delete, :data => { :confirm => 'Are you sure?' } %></p>
         <% end %>
 
         <%= link_to 'New Company', new_company_path %> | 

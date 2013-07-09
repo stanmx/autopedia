@@ -5,7 +5,10 @@ class CompaniesController < ApplicationController
   layout 'companies', :only => [:index, :show]
 
   def index
-    @companies = Company.all
+    @companies = Company.search(params[:search])
+    @json = Company.search(params[:search]).to_gmaps4rails
+    @categories = Category.includes(:companies).all
+
 
     respond_to do |format|
       format.html # index.html.erb

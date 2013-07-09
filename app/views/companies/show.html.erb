@@ -30,7 +30,6 @@
         <li><span>Horario:</span> <%= @company.schedule %></li>
         <li class="two"><span>Correo Electrónico:</span> <%= @company.email %></li>
         <li><span>Web:</span> <%= @company.web %></li>
-        <!--<li class="two"><span>Ubicación:</span> <%= @company.location %></li>-->
       </ul>
     </section><!-- end /#details -->
 
@@ -61,7 +60,7 @@
     </section>
 
     <section id="bmap">
-      <%= link_to image_tag('220x220.jpg', :alt => '220x220'), '#', :target => '_blank' %>
+      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=220x220&sensor=false&zoom=16&markers=#{@company.latitude}%2C#{@company.longitude}" %>
     </section><!-- end /#bmap -->
 
     <section id="feed">

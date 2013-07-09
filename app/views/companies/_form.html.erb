@@ -60,8 +60,16 @@
     <%= f.text_area :vision %>
   </div>
   <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
+  </div>
+   <div class="field">
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude %>
+  </div>
+   <div class="field">
+    <%= f.label :gmaps %><br />
+    <%= f.check_box :gmaps %>
   </div>
   <div class="field">
     <%= f.fields_for :pictures do |picture_fields| %>

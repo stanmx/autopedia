@@ -2,21 +2,21 @@
 <html lang="es-MX">
 <head>
   <title>Autopedia&reg;</title>
-  <%= stylesheet_link_tag    "frontend", :media => "all" %>
-  <%= stylesheet_link_tag    "responsiveslides", :media => "all" %>
+  <%= stylesheet_link_tag "frontend", :media => "all" %>
+  <%= stylesheet_link_tag "gmaps4rails", :media => "all" %>
+  <%= stylesheet_link_tag "responsiveslides", :media => "all" %>
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Economica|Ubuntu">
-  <%= javascript_include_tag "modernizr", "jquery-1.7.2.min", "jcarousellite_1.0.1", "responsiveslides" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= render 'shared/header' %>
+    <%= render 'shared/header' %>
 
-<%= yield %>
+    <%= yield %>
 
-<%= render 'shared/additionals' %>
-<%= render 'shared/footer' %>
-
+    <%= render 'shared/additionals' %>
+    <%= render 'shared/footer' %>
 		<script>
 
       $(function() {
@@ -43,8 +43,21 @@
               namespace: "transparent-btns"
             });
 
+          $("#warrantytrue").click(function(e){
+            e.preventDefault();
+            $(".warrantyfalse").fadeOut();
+            $(".warrantytrue").fadeIn();
+          });
+
+          $("#warrantyfalse").click(function(e){
+            e.preventDefault();
+            $(".warrantytrue").fadeOut();
+            $(".warrantyfalse").fadeIn();
+          });
+
       });
 
     </script>
+    <%= yield :scripts %>
 </body>
 </html>

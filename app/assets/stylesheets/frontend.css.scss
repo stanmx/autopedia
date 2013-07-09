@@ -537,12 +537,18 @@ body {
 					div#middlebanners ul li a img {
 						border: none;
 					}
-		div#map {
+		div.map_container {
 			margin: 40px 0 0;
+			padding: 0;
+			border: none;
 			width: 100%;
 			height: 400px;
-			background-color: #ccc;
-		}	
+		}
+
+			div#map {
+				width: 100%;
+				height: 400px;
+			}	
 
 		div#mapsearch {
 			width: 100%;

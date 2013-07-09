@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
   validates :title, :icon, :presence => true
 
   #paperclip
-  has_attached_file :icon, 	:styles 		=> { :thumb => "80x80>" }, 
+  has_attached_file :icon, 	:styles 		=> { :thumb => "80x80>", :marker => "40x40>" }, 
   							:default_url 	=> "/images/:style/missing.png"
 
 end
