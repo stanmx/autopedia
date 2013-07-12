@@ -34,6 +34,19 @@
         			namespace: "transparent-btns"
       			});
 
+          //
+          $("#newtrue").click(function(e){
+            e.preventDefault();
+            $(".newfalse").fadeOut();
+            $(".newtrue").fadeIn();
+          });
+
+          $("#newfalse").click(function(e){
+            e.preventDefault();
+            $(".newtrue").fadeOut();
+            $(".newfalse").fadeIn();
+          });
+
 			    //boxes
       			$('#showbox1').on('click',function(){
       				$('div[id^=box]').hide();

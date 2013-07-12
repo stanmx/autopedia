@@ -20,8 +20,8 @@ class Company < ActiveRecord::Base
   end
 
   def self.search(search)
-    result = order('created_at DESC' && :conditions => { :warranty => true })
-    result = result.joins(:category).where('name LIKE ? OR categories.title LIKE ?', "%#{search}%", "%#{search}%").order('created_at DESC' && :conditions => { :warranty => true }) if search.present?
+    result = order('warranty DESC')
+    result = result.joins(:category).where('name LIKE ? OR categories.title LIKE ?', "%#{search}%", "%#{search}%").order('warranty DESC') if search.present?
     result
   end
 

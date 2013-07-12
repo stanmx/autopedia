@@ -5,7 +5,9 @@ class CarsController < ApplicationController
   layout 'cars', :only => [:index, :show]
 
   def index
-    @cars = Car.all
+    @cars = Car.search(params[:search]).year(params[:fyear],params[:tyear])
+    @brands = Brand.joins(:models => :cars).all
+    @models = Model.joins(:cars).all
 
     respond_to do |format|
       format.html # index.html.erb

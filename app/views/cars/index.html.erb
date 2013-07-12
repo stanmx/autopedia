@@ -71,23 +71,21 @@
         <h2>(<%= @cars.count %>) Resultado<% if @cars.count >= 2 %>s<% end %></h2>
         <ul class="filters">
             <li><span>Filtros:</span></li>
-            <li><a title="Todos" href="#">Todos</a></li>
-            <li><a title="Nuevos" href="#">Nuevos</a></li>
-            <li><a title="Usados" href="#">Usados</a></li>
-            <li><a title="Precio" href="#">Precio</a></li>
+            <li><%= link_to "Todos", cars_path(:search => :all) %></li>
+            <li><%= link_to "Nuevos", '#', :id => 'newtrue' %></li>
+            <li><%= link_to "Usados", '#', :id => 'newfalse' %></li>
         </ul>
 
         <% @cars.each do |car| %>
-        <div class="result">
+        <div class="result <%= 'newtrue' if car.new == true %> <%= 'newfalse' if car.new == false %>">
             <a title="<%= car.model.title %>" href="<%= car_path(car) %>">
                 <%= image_tag car.photos.first.photo.url(:thumb) %>
-                <h3><%= car.year %> <%= car.model.brand.title %> <%= car.model.title %> <span>ID <%= car.id %></span> <span><%= car.price %> <abbr title="Moneda Nacional">M.N.</abbr></span> <span><%= humanize_bool(car.new) %></span> <span><%= l car.updated_at, :format => :short %></span></h3>
+                <h3><%= car.year %> <%= car.model.brand.title %> <%= car.model.title %> <span>ID <%= car.id %></span> <span><%= car.price %> <abbr title="Moneda Nacional">M.N.</abbr></span> <span><%= humanize_car_bool(car.new) %></span> <span><%= l car.updated_at, :format => :short %></span></h3>
                 <p>Estatus: <%= car.status %>, Color: <%= car.color %>, Interior: <%= car.interior %>, Transmisión: <%= car.transmission %>, Kilometraje: <%= car.km_miles %>...</p>
                 <h5><%= car.photos.count %></h5>
             </a>
+            <p><%= link_to 'Show', car %> | <%= link_to 'Edit', edit_car_path(car) %> | <%= link_to 'Destroy', car, :method => :delete, :data => { :confirm => 'Are you sure?' } %></p>
         </div><!-- end /.result -->
-
-        <p><%= link_to 'Show', car %> | <%= link_to 'Edit', edit_car_path(car) %> | <%= link_to 'Destroy', car, :method => :delete, :data => { :confirm => 'Are you sure?' } %></p>
 
         <% end %>
 

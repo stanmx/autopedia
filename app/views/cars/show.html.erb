@@ -17,7 +17,7 @@
     </section><!-- end /#video -->
 
     <section id="details">
-      <h2><%= @car.year %> <%= @car.model.brand.title %> <%= @car.model.title %> (<%= humanize_bool(@car.new) %>)</h2>
+      <h2><%= @car.year %> <%= @car.model.brand.title %> <%= @car.model.title %> (<%= humanize_car_bool(@car.new) %>)</h2>
       <ul>
         <li><span>Marca:</span> <%= @car.model.brand.title %></li>
         <li class="two"><span>Modelo:</span> <%= @car.model.title %></li>

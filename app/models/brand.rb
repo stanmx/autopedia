@@ -1,5 +1,6 @@
 class Brand < ActiveRecord::Base
   has_many :models
+  has_many :cars
   attr_accessible :description, :title, :logo, :delete_logo
   attr_accessor :delete_logo
 
