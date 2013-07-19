@@ -1,7 +1,7 @@
 class CountriesController < ApplicationController
   # GET /countries
   # GET /countries.json
-
+  before_filter :authenticate_user!, :except => [:index, :show]
   layout 'frontend', :only => [:index, :show]
 
   def index

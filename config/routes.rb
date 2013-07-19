@@ -1,5 +1,7 @@
 Autopedia::Application.routes.draw do
 
+  devise_for :users, :path => 'users', :path_names => { :sign_in => 'login', :sign_out => 'logout'}
+
   get "/pages/home" => 'pages#home', :as => :page, :format => false
   get "/pages/certification" => 'pages#certification', :as => :page, :format => false
   get "/pages/contact" => 'pages#contact', :as => :page, :format => false

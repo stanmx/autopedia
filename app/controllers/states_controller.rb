@@ -1,7 +1,7 @@
 class StatesController < ApplicationController
   # GET /states
   # GET /states.json
-
+  before_filter :authenticate_user!, :except => [:index, :show]
   layout 'frontend', :only => [:index, :show]
 
   def index

@@ -8,13 +8,25 @@ class Car < ActiveRecord::Base
 
   def self.search(search)
     result = order('new DESC')
-    result = joins(:model => :brand).where('brands.title LIKE ? OR models.title LIKE ?', "%#{search}%", "%#{search}%").order('new DESC') if search.present?
+    result = joins(:model => :brand).where('brands.title LIKE ? OR models.title LIKE ? OR status LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%").order('new DESC') if search.present?
     result
   end
 
   def self.year(fyear,tyear)
     result = order('new DESC')
     result = where(:year => fyear..tyear) if fyear.present? && tyear.present? 
+    result
+  end
+
+  def self.price(fprice,tprice)
+    result = order('new DESC')
+    result = where(:price => fprice..tprice) if fprice.present? && tprice.present? 
+    result
+  end
+
+  def self.location(fstate,fcity)
+    result = order('new DESC')
+    result = joins(:city => :state).where('states.title LIKE ? AND cities.title LIKE ?', fstate, fcity).order('new DESC') if fstate.present? && fcity.present?
     result
   end
 

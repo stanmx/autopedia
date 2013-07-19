@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
-
+  before_filter :authenticate_user!, :except => [:index, :show]
   layout 'companies', :only => [:index, :show]
 
   def index

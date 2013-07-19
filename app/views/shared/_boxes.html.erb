@@ -10,9 +10,6 @@
             <% end %>
 		</ul>
 	</section>
-	<footer>
-		<h5><a title="Reiniciar Busqueda" href="#">Reiniciar Busqueda</a></h5>
-	</footer>
 </div><!-- end /.optionbox -->
 
 <div id="box2" class="optionbox">
@@ -27,9 +24,6 @@
             <% end %>
 		</ul>
 	</section>
-	<footer>
-		<h5><a title="Reiniciar Busqueda" href="#">Reiniciar Busqueda</a></h5>
-	</footer>
 </div><!-- end /.optionbox -->
 
 <div id="box3" class="optionbox">
@@ -53,10 +47,6 @@
 		</form>
 		<% end %>
 	</section>
-
-	<footer>
-		<h5><a title="Reiniciar Busqueda" href="#">Reiniciar Busqueda</a></h5>
-	</footer>
 </div><!-- end /.optionbox -->
 
 <div id="box4" class="optionbox">
@@ -66,17 +56,11 @@
 	</header>
 	<section class="infobox">
 		<ol>
-			<li><a title="Fronterizo" href="#">Fronterizo</a></li>
-			<li><a title="Americano" href="#">Americano</a></li>
-			<li><a title="Titulo Limpio" href="#">Titulo Limpio</a></li>
-			<li><a title="Nacional" href="#">Nacional</a></li>
-			<li><a title="Salvage" href="#">Salvage</a></li>
-			<li><a title="Para Partes" href="#">Para Partes</a></li>
+			<% @status.each do |s| %>
+                <li><%= link_to s.status, cars_path(:search => s.status) %></li>
+            <% end %>
 		</ol>
 	</section>
-	<footer>
-		<h5><a title="Reiniciar Busqueda" href="#">Reiniciar Busqueda</a></h5>
-	</footer>
 </div><!-- end /.optionbox -->
 
 <div id="box5" class="optionbox">
@@ -85,39 +69,22 @@
 		<h5><%= link_to image_tag('close-optionbox.png', :alt => 'Cerrar'), '#', :class => 'cerrar' %></h5>
 	</header>
 	<section class="infobox">
-		<form>
+		<%= form_for cars_path, :method => :get do %>
 			<p>
 				<label>Estado</label>
-				<select>
-					<option selected="selected">Baja California</option>
-					<option>Baja California Sur</option>
-					<option>Sonora</option>
-				</select>
-				<span><a title="Cambio de Estado" href="#">Cambio de Estado</a></span>
+				<%= select_tag :fstate, options_for_select(State.all.map {|x| [ x.title, x.title ]}) %>
+
 			</p>
 			<p>
 				<label>Ciudad</label>
-				<select>
-					<option selected="selected">Tijuana</option>
-					<option>Rosarito</option>
-					<option>Ensenada</option>
-				</select>
-				<span><a title="Cambio de Ciudad" href="#">Cambio de Ciudad</a></span>
+				<%= select_tag :tcity, options_for_select(City.all.map {|x| [ x.title, x.title ]}) %>
 			</p>
 			<p>
-				<label>Delegación</label>
-				<select>
-					<option selected="selected">Playas de Tijuana</option>
-					<option>Otay Universidad</option>
-					<option>Zona Centro</option>
-				</select>
-				<span><a title="Cambio de Delegación" href="#">Cambio de Delegación</a></span>
+				<%= submit_tag "Buscar", :name => nil %>
 			</p>
 		</form>
+		<% end %>
 	</section>
-	<footer>
-		<h5><a title="Reiniciar Busqueda" href="#">Reiniciar Busqueda</a></h5>
-	</footer>
 </div><!-- end /.optionbox -->
 
 <div id="box6" class="optionbox">
@@ -126,26 +93,20 @@
 		<h5><%= link_to image_tag('close-optionbox.png', :alt => 'Cerrar'), '#', :class => 'cerrar' %></h5>
 	</header>
 	<section class="infobox">
-		<form>
+		<%= form_for cars_path, :method => :get do %>
 			<p>
 				<label>Mínimo</label>
-				<select>
-					<option selected="selected">$0.00</option>
-					<option>$10.00</option>
-					<option>$100.00</option>
-				</select>
+				<%= select_tag :fprice, options_for_select(Car.all.map {|x| [ number_to_currency(x.price), x.price ]}) %>
+
 			</p>
 			<p>
 				<label>Máximo</label>
-				<select>
-					<option selected="selected">$10.00</option>
-					<option>$100.00</option>
-					<option>$1000.00</option>
-				</select>
+				<%= select_tag :tprice, options_for_select(Car.all.map {|x| [ number_to_currency(x.price), x.price ]}) %>
+			</p>
+			<p>
+				<%= submit_tag "Buscar", :name => nil %>
 			</p>
 		</form>
+		<% end %>
 	</section>
-	<footer>
-		<h5><a title="Reiniciar Busqueda" href="#">Reiniciar Busqueda</a></h5>
-	</footer>
 </div><!-- end /.optionbox -->

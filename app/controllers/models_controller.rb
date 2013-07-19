@@ -1,7 +1,7 @@
 class ModelsController < ApplicationController
   # GET /models
   # GET /models.json
-
+  before_filter :authenticate_user!, :except => [:index, :show]
   layout 'frontend', :only => [:index, :show]
 
   def index

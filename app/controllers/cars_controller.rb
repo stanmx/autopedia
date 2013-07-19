@@ -2,12 +2,15 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
 
+  before_filter :authenticate_user!, :except => [:index, :show]
   layout 'cars', :only => [:index, :show]
 
   def index
-    @cars = Car.search(params[:search]).year(params[:fyear],params[:tyear])
+    @cars = Car.search(params[:search]).year(params[:fyear],params[:tyear]).price(params[:fprice],params[:tprice]).location(params[:fstate],params[:tcity])
     @brands = Brand.joins(:models => :cars).all
     @models = Model.joins(:cars).all
+    @status = Car.select('DISTINCT status')
+    @location = State.joins(:cities => :cars).all
 
     respond_to do |format|
       format.html # index.html.erb

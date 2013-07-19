@@ -80,7 +80,7 @@
         <div class="result <%= 'newtrue' if car.new == true %> <%= 'newfalse' if car.new == false %>">
             <a title="<%= car.model.title %>" href="<%= car_path(car) %>">
                 <%= image_tag car.photos.first.photo.url(:thumb) %>
-                <h3><%= car.year %> <%= car.model.brand.title %> <%= car.model.title %> <span>ID <%= car.id %></span> <span><%= car.price %> <abbr title="Moneda Nacional">M.N.</abbr></span> <span><%= humanize_car_bool(car.new) %></span> <span><%= l car.updated_at, :format => :short %></span></h3>
+                <h3><%= car.year %> <%= car.model.brand.title %> <%= car.model.title %> <span>ID <%= car.id %></span> <span><%= number_to_currency car.price %> <abbr title="Moneda Nacional">M.N.</abbr></span> <span><%= humanize_car_bool(car.new) %></span> <span><%= l car.updated_at, :format => :short %></span></h3>
                 <p>Estatus: <%= car.status %>, Color: <%= car.color %>, Interior: <%= car.interior %>, Transmisión: <%= car.transmission %>, Kilometraje: <%= car.km_miles %>...</p>
                 <h5><%= car.photos.count %></h5>
             </a>

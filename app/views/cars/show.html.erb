@@ -27,7 +27,7 @@
         <li class="two"><span>Transmisión:</span> <%= @car.transmission %></li>
         <li><span>KM/Millas:</span>  <%= @car.km_miles %></li>
         <li class="two"><span>Estatus:</span> <%= @car.status %></li>
-        <li><span>Precio:</span> <%= @car.price %> pesos</li>
+        <li><span>Precio:</span> <%= number_to_currency @car.price %> pesos</li>
       </ul>
       <h4>Contacto</h4>
       <ul>

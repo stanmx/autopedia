@@ -14,6 +14,7 @@ gem "paperclip", "2.7"
 gem "high_voltage"
 gem "cocaine", "0.3.2"
 gem 'gmaps4rails'
+gem 'devise'
 
 #gem 'pry', :group => :development
 
