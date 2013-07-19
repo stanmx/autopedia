@@ -5,6 +5,7 @@ class CompaniesController < ApplicationController
   layout 'companies', :only => [:index, :show]
 
   def index
+    binding.pry
     @companies = Company.search(params[:search])
     @json = Company.search(params[:search]).to_gmaps4rails
     @categories = Category.includes(:companies).all

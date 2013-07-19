@@ -67,10 +67,11 @@
     </div><!-- end /#middlebanners -->
 
     <div id="results">
+        
         <h2>(<%= @cars.count %>) Resultado<% if @cars.count >= 2 %>s<% end %></h2>
         <ul class="filters">
             <li><span>Filtros:</span></li>
-            <li><%= link_to "Todos", cars_path(:search => :all) %></li>
+            <li><%= link_to "Todos", page_url('autos_en_venta', :search => :all) %></li>
             <li><%= link_to "Nuevos", '#', :id => 'newtrue' %></li>
             <li><%= link_to "Usados", '#', :id => 'newfalse' %></li>
         </ul>
@@ -83,13 +84,9 @@
                 <p>Estatus: <%= car.status %>, Color: <%= car.color %>, Interior: <%= car.interior %>, Transmisión: <%= car.transmission %>, Kilometraje: <%= car.km_miles %>...</p>
                 <h5><%= car.photos.count %></h5>
             </a>
-            <p><%= link_to 'Show', car %> | <%= link_to 'Edit', edit_car_path(car) %> | <%= link_to 'Destroy', car, :method => :delete, :data => { :confirm => 'Are you sure?' } %></p>
         </div><!-- end /.result -->
 
         <% end %>
-
-        <%= link_to 'New Car', new_car_path %> | 
-        <%= link_to 'Back to Controls', control_index_path %>
 
     </div><!-- end /#results -->
 
