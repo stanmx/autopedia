@@ -1,11 +1,10 @@
 class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
-  before_filter :authenticate_user!, :except => [:index, :show]
-  layout 'companies', :only => [:index, :show]
+  before_filter :authenticate_user!
+
 
   def index
-    binding.pry
     @companies = Company.search(params[:search])
     @json = Company.search(params[:search]).to_gmaps4rails
     @categories = Category.includes(:companies).all

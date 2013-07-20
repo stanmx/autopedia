@@ -1,8 +1,7 @@
 class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
-  before_filter :authenticate_user!, :except => [:index, :show]
-  layout 'frontend', :only => [:index, :show]
+  before_filter :authenticate_user!
 
   def index
     @categories = Category.all

@@ -1,39 +1,26 @@
-<div id="sitemap">
+<h2><%= @company.name %></h2>
 
-  <div class="center">
-    <p>Inicio &rsaquo; Directorio &rsaquo; <%= @company.category.title %> &rsaquo; <%= @company.city.id %></p>
-  </div><!-- end /.center -->
-
-</div><!-- end /#sitemap -->
-
-<div id="content">
-
-  <p id="notice"><%= notice %></p>
-
-  <div id="business">
-
-
-    <section id="bslide">
-      <ul class="rslides">
+    <section>
+      <ul>
         <% for picture in @company.pictures %> 
         <li><%= image_tag picture.picture.url(:large), :alt => @company.name, :border => 0 %></li>
         <% end %>  
       </ul>
     </section><!-- end /#bslide -->
 
-    <section id="bdetails">
+    <section>
       <ul>
         <li><span>Dirección:</span> <%= @company.address %></li>
-        <!--<li class="two"><span>Ciudad:</span> <%= @company.city.title %></li>
-        <li><span>Garantía:</span> <%= humanize_bool(@company.warranty) %></li>-->
-        <li class="two"><span>Teléfono:</span> <%= @company.phone %></li>
+        <li><span>Ciudad:</span> <%= @company.city.title %></li>
+        <li><span>Garantía:</span> <%= humanize_bool(@company.warranty) %></li>
+        <li><span>Teléfono:</span> <%= @company.phone %></li>
         <li><span>Horario:</span> <%= @company.schedule %></li>
-        <li class="two"><span>Correo Electrónico:</span> <%= @company.email %></li>
+        <li><span>Correo Electrónico:</span> <%= @company.email %></li>
         <li><span>Web:</span> <%= @company.web %></li>
       </ul>
     </section><!-- end /#details -->
 
-    <section id="bdescription">
+    <section>
       <h3>Acerca de...</h3>
       <p><%= @company.about %></p>
       <h3>Misión</h3>
@@ -42,39 +29,9 @@
       <p><%= @company.vision %></p>
     </section><!-- end /#bdescription -->
 
-    <%= link_to 'Edit', edit_company_path(@company) %> |
-    <%= link_to 'Back', companies_path %> | 
-    <%= link_to 'Back to Controls', control_index_path %>
-
-  </div><!-- end /#business -->
-
-  <div id="sidebar">
-
-    <section id="blogo">
-      <%= image_tag @company.pictures.first.picture.url(:medium) %>
-    </section><!-- end /#blogo -->
-
-    <section id="bname">
-      <h3><%= @company.name %></h3>
-      <h5>ID <%= @company.id %></h5>
-    </section>
-
-    <section id="bmap">
+    <section>
       <%= image_tag "http://maps.google.com/maps/api/staticmap?size=220x220&sensor=false&zoom=16&markers=#{@company.latitude}%2C#{@company.longitude}" %>
     </section><!-- end /#bmap -->
 
-    <section id="feed">
-      <h3>Social Media Feed</h3>
-      <p>Próximamente.</p>
-    </section>
-
-  </div><!-- end /#businessbar -->
-
-  <div id="middlebanners">
-    <ul>
-      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
-      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
-    </ul>
-  </div><!-- end /#middlebanners -->
-
-</div><!-- end /#content -->
+     <%= link_to 'Edit', edit_company_path(@company) %> |
+    <%= link_to 'Back', companies_path %>

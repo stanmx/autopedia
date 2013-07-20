@@ -1,0 +1,77 @@
+<div id="sitemap">
+
+  <div class="center">
+    <p>Inicio &rsaquo; TV</p>
+  </div><!-- end /.center -->
+
+</div><!-- end /#sitemap -->
+
+<div id="content">
+
+  <div id="magazines" class="others">
+
+    <h2>Autopedia&reg; TV</h2>
+    <h4>Mantente al tanto de lo que sucede en <b>Autopedia&reg; TV</b></h4>
+    
+    <section id="tvnow">
+      <%= @videos.video.html_safe %>
+    
+      <section class="share">
+        <%= image_tag 'shared-buttons.png', :alt => 'Compartir' %>
+      </section>
+
+      <h3><%= @videos.title %></h3>
+      <h5><%= l @videos.created_at, :formats => :long %></h5>
+      <p><%= @videos.description %></p>     
+
+    </section><!-- end /#tvnow -->
+
+    <section id="tvothers">
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+      <section>
+        <a title="Autopedia&reg; TV" href="#">
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
+          <h5>Titulo de Video #2</h5>
+        </a>
+      </section>
+
+    </section><!-- end /#tvothers -->
+
+  </div><!-- end /#text -->
+
+  <div id="sidebar">
+
+    <%= render 'shared/bannerside' %>
+    <%= render 'shared/searchside' %>
+
+  </div><!-- end /#sidebar -->
+
+  <div id="middlebanners">
+    <ul>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+    </ul>
+  </div><!-- end /#middlebanners -->
+
+</div><!-- end /#content -->

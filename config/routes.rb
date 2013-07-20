@@ -2,11 +2,17 @@ Autopedia::Application.routes.draw do
 
   devise_for :users, :path => 'users', :path_names => { :sign_in => 'login', :sign_out => 'logout'}
 
-  get "/pages/home" => 'pages#home', :as => :page, :format => false
-  get "pages/autos_en_venta" => 'pages#autos_en_venta', :as => :page, :format => false
-  get "/pages/certification" => 'pages#certification', :as => :page, :format => false
-  get "/pages/contact" => 'pages#contact', :as => :page, :format => false
-  get "/pages/location" => 'pages#location', :as => :page, :format => false
+  get "/pages/inicio" => 'pages#inicio', :as => :page, :format => false
+  get "/pages/autos_en_venta" => 'pages#autos_en_venta', :as => :page, :format => false
+  get "/pages/autos_en_venta/:id" => 'pages#auto', :as => :page, :format => false
+  get "/pages/directorio" => 'pages#directorio', :as => :page, :format => false
+  get "/pages/directorio/:id" => 'pages#negocio', :as => :page, :format => false
+  get "/pages/revista" => 'pages#revista', :as => :page, :format => false
+  get "/pages/tv" => 'pages#tv', :as => :page, :format => false
+
+  get "/pages/certificate" => 'pages#certificate', :as => :page, :format => false
+  get "/pages/contacto" => 'pages#contacto', :as => :page, :format => false
+  get "/pages/ubicacion" => 'pages#ubicacion', :as => :page, :format => false
 
   resources :videos
 

@@ -1,0 +1,43 @@
+<div id="sitemap">
+
+  <div class="center">
+    <p>Inicio &rsaquo; Revista</p>
+  </div><!-- end /.center -->
+
+</div><!-- end /#sitemap -->
+
+<div id="content">
+
+  <div id="magazines" class="others">
+
+    <h2>Autopedia&reg; Revista</h2>
+    <h4>Descarga nuestra revista mensual <b>Autopedia&reg; Revista</b>.</h4>
+    
+    <% @magazines.each do |magazine| %>
+      <section class="magazine">
+        <%= image_tag magazine.covers.first.cover.url(:large) %>
+        <h3>Revista #<%= magazine.number %></h3>
+        <h4><%= magazine.title %></h4>
+        <p><%= magazine.description %></p>
+        <h5><%= link_to 'Descargar', magazine.covers.first.cover.url(:original), :target => '_blank' %></h5>  
+      </section><!-- end /.magazine -->
+      <% end %>
+      <br />
+
+  </div><!-- end /#text -->
+
+  <div id="sidebar">
+
+    <%= render 'shared/bannerside' %>
+    <%= render 'shared/searchside' %>
+
+  </div><!-- end /#sidebar -->
+
+  <div id="middlebanners">
+    <ul>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+      <li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+    </ul>
+  </div><!-- end /#middlebanners -->
+
+</div><!-- end /#content -->

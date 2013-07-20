@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
 	layout 'frontend'
 
-	def home
+	def inicio
 		@videos = Video.all.last
 	end
 
@@ -16,13 +16,41 @@ class PagesController < ApplicationController
     	render :layout => "cars"
 	end
 
-	def certification
+	def auto
+    	@car = Car.find(params[:id])
+
+    	render :layout => "cars"
+  	end
+
+  	def directorio
+  		@companies = Company.search(params[:search])
+    	@json = Company.search(params[:search]).to_gmaps4rails
+    	@categories = Category.includes(:companies).all
+
+    	render :layout => "companies"
+  	end
+
+  	def negocio
+  		@company = Company.find(params[:id])
+
+  		render :layout => "companies"
+  	end
+
+  	def revista
+  		@magazines = Magazine.all
+  	end
+
+  	def tv
+  		@videos = Video.all.last
+  	end
+
+	def certificate
 	end
 
-	def contact
+	def contacto
 	end
 
-	def location
+	def ubicacion
 		render :layout => "location"
 	end
 

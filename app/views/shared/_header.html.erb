@@ -28,21 +28,21 @@
 
 		<nav>
 			<ul id="nav">
-				<li class="first"><%= link_to "Inicio", page_path("home") %></li>
-				<li><%= link_to "Autos en Venta", cars_path %></li>
-				<li class="first"><%= link_to "Directorio", companies_path %></li>
+				<li class="first"><%= link_to "Inicio", page_path("inicio") %></li>
+				<li><%= link_to "Autos en Venta", page_path("autos_en_venta") %></li>
+				<li class="first"><%= link_to "Directorio", page_path("directorio") %></li>
 				<li>
 					<a title="Medios" href="#">Medios <%= image_tag 'bottom-arrow.png', :alt => 'Mostrar Contenido' %></a>
 					<ul class="noJS">
-						<li><%= link_to "Autopedia® Revista", magazines_path %></li>
-						<li><%= link_to "Autopedia® TV", videos_path %></li>
+						<li><%= link_to "Autopedia® Revista", page_path("revista") %></li>
+						<li><%= link_to "Autopedia® TV", page_path("tv") %></li>
 					</ul>
 				</li>
-				<li class="first"><%= link_to "Certificate", page_path("certification") %></li>
+				<li class="first"><%= link_to "Certificate", page_path("certificate") %></li>
 				<li>
-					<a title="Contacto" href="<%= page_path("contact") %>">Contacto <%= image_tag 'bottom-arrow.png', :alt => 'Mostrar Contenido' %></a>
+					<a title="Contacto" href="<%= page_path("contacto") %>">Contacto <%= image_tag 'bottom-arrow.png', :alt => 'Mostrar Contenido' %></a>
 					<ul class="noJS">
-						<li><%= link_to "Ubicación", page_path("location") %></li>
+						<li><%= link_to "Ubicación", page_path("ubicacion") %></li>
 					</ul>
 				</li>
 			</ul>

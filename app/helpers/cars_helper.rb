@@ -6,4 +6,10 @@ module CarsHelper
     	"Nuevo"
   	end
 
+  	#humanizamos el valor boolean de video
+  	def humanize_value_bool(value)
+    	return "No" unless value
+    	"Si"
+  	end
+
 end

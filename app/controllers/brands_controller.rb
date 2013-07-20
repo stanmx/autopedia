@@ -1,8 +1,7 @@
 class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json
-  before_filter :authenticate_user!, :except => [:index, :show]
-  layout 'frontend', :only => [:index, :show]
+  before_filter :authenticate_user!
   
   def index
     @brands = Brand.all

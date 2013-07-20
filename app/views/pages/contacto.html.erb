@@ -1,0 +1,52 @@
+<div id="content">
+
+	<div id="text" class="others">
+
+		<h2>Contacto Autopedia&reg;</h2>
+		<h4>Para mantenerte en contacto y recibir las mejores promociones que Autopedia.mx tiene para ti, llena el siguiente formulario y en breve nos pondremos en contacto para responder tus preguntas o comentarios.</h4>
+	
+		<section id="contact">
+			<form>
+				<fieldset>
+					<p>
+						<label>Nombre</label>
+						<input type="text" class="input300" />
+					</p>
+					<p>
+						<label>Teléfono</label>
+						<input type="text" class="input300" />
+					</p>
+					<p>
+						<label>Correo Electrónico</label>
+						<input type="text" class="input300" />
+					</p>
+				</fieldset>
+				<fieldset>
+					<p>
+						<label>Mensaje</label>
+						<textarea></textarea>
+					</p>
+				</fieldset>
+				<p>
+					<input type="submit" value="Enviar" class="inputsubmit" />
+				</p>
+			</form>
+		</section><!-- end /#contact -->
+
+	</div><!-- end /#text -->
+
+	<div id="sidebar">
+
+		<%= render 'shared/bannerside' %>
+		<%= render 'shared/searchside' %>
+
+	</div><!-- end /#sidebar -->
+
+	<div id="middlebanners">
+		<ul>
+			<li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+			<li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+		</ul>
+	</div><!-- end /#middlebanners -->
+
+</div><!-- end /#content -->

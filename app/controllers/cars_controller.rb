@@ -2,8 +2,7 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
 
-  before_filter :authenticate_user!, :except => [:index, :show]
-  layout 'cars', :only => [:index, :show]
+  before_filter :authenticate_user!
 
   def index
     @cars = Car.search(params[:search]).year(params[:fyear],params[:tyear]).price(params[:fprice],params[:tprice]).location(params[:fstate],params[:tcity])

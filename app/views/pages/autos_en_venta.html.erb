@@ -71,14 +71,14 @@
         <h2>(<%= @cars.count %>) Resultado<% if @cars.count >= 2 %>s<% end %></h2>
         <ul class="filters">
             <li><span>Filtros:</span></li>
-            <li><%= link_to "Todos", page_url('autos_en_venta', :search => :all) %></li>
+            <li><%= link_to "Todos", page_path('autos_en_venta') %></li>
             <li><%= link_to "Nuevos", '#', :id => 'newtrue' %></li>
             <li><%= link_to "Usados", '#', :id => 'newfalse' %></li>
         </ul>
 
         <% @cars.each do |car| %>
         <div class="result <%= 'newtrue' if car.new == true %> <%= 'newfalse' if car.new == false %>">
-            <a title="<%= car.model.title %>" href="<%= car_path(car) %>">
+            <a title="<%= car.model.title %>" href="<%= page_path("autos_en_venta/#{car.id}") %>">
                 <%= image_tag car.photos.first.photo.url(:thumb) %>
                 <h3><%= car.year %> <%= car.model.brand.title %> <%= car.model.title %> <span>ID <%= car.id %></span> <span><%= number_to_currency car.price %> <abbr title="Moneda Nacional">M.N.</abbr></span> <span><%= humanize_car_bool(car.new) %></span> <span><%= l car.updated_at, :format => :short %></span></h3>
                 <p>Estatus: <%= car.status %>, Color: <%= car.color %>, Interior: <%= car.interior %>, Transmisión: <%= car.transmission %>, Kilometraje: <%= car.km_miles %>...</p>

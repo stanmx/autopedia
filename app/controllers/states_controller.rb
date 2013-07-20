@@ -1,8 +1,7 @@
 class StatesController < ApplicationController
   # GET /states
   # GET /states.json
-  before_filter :authenticate_user!, :except => [:index, :show]
-  layout 'frontend', :only => [:index, :show]
+  before_filter :authenticate_user!
 
   def index
     @states = State.all

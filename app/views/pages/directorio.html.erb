@@ -1,0 +1,73 @@
+<div id="sitemap">
+
+    <div class="center">
+        <p>Inicio &rsaquo; Directorio</p>
+    </div><!-- end /.center -->
+
+</div><!-- end /#sitemap -->
+
+<div id="content">
+
+    <%= gmaps(:map_options => { :raw => "{styles: myStyle}" }, 
+                                :markers => { :data => @json }) %>
+
+    <script type="text/javascript" charset="utf-8">
+    var myStyle = [ 
+        { featureType: "all", stylers: [{ "hue": "#C71514" } ]} 
+    ];
+    </script>
+
+    <div id="mapsearch">
+        <ul>
+            <li class="tip">Encuentra de todo para tu auto &rarr;</li>
+            <li>
+                <%= form_tag page_path("directorio"), :method => :get do %>
+                    <%= text_field_tag :search, params[:search], :placeholder => "¿Buscas un auto? Encuentralo aquí?", :class => "inputbold" %>
+                    <%= submit_tag "Buscar", :name => nil, :class => "submitbold" %>
+                </form>
+            <% end %>
+            </li>
+        </ul>
+    </div><!-- end /#mapsearch -->
+
+    <section id="carrousel">
+        <h3>Para buscar por categoría, selecciona un icono del directorio de negocios de Autopedia.mx</h3>
+        <a href="#"><img class="prev" alt="Preview" src="<%= image_path('left-arrow.png') %>" /></a>
+        <a href="#"><img class="next" alt="Next" src="<%= image_path('right-arrow.png') %>" /></a>
+        <ul>
+            <% @categories.each do |category| %>
+                <li><%= link_to image_tag(category.icon.url(:thumb), :alt => category.title), page_path("directorio", :search => category.title) %></li>
+            <% end %>
+            
+        </ul>
+    </section><!-- end /#carrousel -->
+
+    <div id="results">
+
+        <h2>(<%= @companies.count %>) Resultado<% if @companies.count >= 2 || @companies.count == 0 %>s<% end %></h2>
+        <ul class="filters">
+            <li><span>Filtros:</span></li>
+            <li><%= link_to "Todos", page_path("directorio", :search => :all) %></li>
+            <li><%= link_to "Garantía", '#', :id => 'warrantytrue' %></li>
+            <li><%= link_to "No Garantía", '#', :id => 'warrantyfalse' %></li>
+        </ul>
+
+        <% @companies.each do |company| %>
+        <div class="result <%= 'warrantytrue' if company.warranty == true %> <%= 'warrantyfalse' if company.warranty == false %>" >
+            <a title="Mercado de Refacciones" href="<%= page_path("directorio/#{company.id}") %>">
+                <%= image_tag company.pictures.first.picture.url(:thumb) %>
+                <h3><%= company.name %> <span>ID <%= company.id %></span> <span><%= humanize_bool(company.warranty) %></span> <span><%= company.category.title %></span></h3>
+                <p><%= truncate(company.about, :lenght => 160, :separator => ' ') %></p>
+            </a>
+        </div><!-- end /.result -->
+        <% end %>
+
+    </div><!-- end /#results -->
+
+    <div id="sidebar">
+
+        <%= render 'shared/searchside' %>
+
+    </div><!-- end /#sidebar -->
+
+</div><!-- end /#content -->

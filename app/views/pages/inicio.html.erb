@@ -1,0 +1,48 @@
+<div id="content">
+
+	<div id="introduction">
+
+		<section id="video">
+      		<%= @videos.video.html_safe %>
+		</section><!-- end /#video -->
+
+		<section id="introbanners">
+			<section>
+				<ul class="rslides">
+					<li><%= link_to image_tag('450x150.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
+					<li><%= link_to image_tag('450x150two.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
+				</ul>
+			</section>
+			<section>
+				<ul class="rslides">
+					<li><%= link_to image_tag('450x150.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
+					<li><%= link_to image_tag('450x150two.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
+				</ul>
+			</section>
+		</section><!-- end /#introbanners -->
+
+	</div><!-- end /#introduction -->
+
+	<?php include("shared/newsletter.php"); ?>
+
+	<div id="middlebanners">
+		<ul>
+			<li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+			<li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
+		</ul>
+	</div><!-- end /#middlebanners -->
+
+	<div id="text">
+
+		<h2>Autopedia.mx</h2>
+		<h4>Autopedia es un portal especializado en automoviles donde encontrarás todo tipo de servicios y productos relacionados al mundo automotriz. Podrás vender o comprar tu automovil completamente gratis, además de encontrar en nuestro amplio y actualizado directorio todo aquello que necesites para tu automovil, desde una llantera, hasta un servicio completo.</h4>
+		<p>Autopedia es un portal especializado en automoviles donde encontrarás todo tipo de servicios y productos relacionados al mundo automotriz. Podrás vender o comprar tu automovil completamente gratis, además de encontrar en nuestro amplio y actualizado directorio todo aquello que necesites para tu automovil, desde una llantera, hasta un servicio completo.</p>
+	</div><!-- end /#text -->
+
+	<div id="sidebar">
+
+		<%= render 'shared/searchside' %>
+
+	</div><!-- end /#sidebar -->
+
+</div><!-- end /#content -->
