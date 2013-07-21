@@ -5,7 +5,7 @@ class Brand < ActiveRecord::Base
   attr_accessor :delete_logo
 
   #validate
-  validates :title, :logo, :presence => true
+  validates_presence_of :title
 
   #paperclip
   has_attached_file :logo, 	:styles 		=> { :medium => "300x300>", 

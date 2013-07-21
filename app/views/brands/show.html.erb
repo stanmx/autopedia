@@ -1,12 +1,10 @@
-<p id="notice"><%= notice %></p>
+
+<div class="page-header">
+  <h2><%= @brand.title %></h2>
+</div>
 
 <p>
-  <b>Title:</b>
-  <%= @brand.title %>
-</p>
-
-<p>
-  <b>Description:</b>
+  <b>Descripción:</b>
   <%= @brand.description %>
 </p>
 
@@ -17,7 +15,6 @@
 	<%= image_tag @brand.logo.url(:thumb) %>
 </p>
 
-
-<%= link_to 'Edit', edit_brand_path(@brand) %> |
-<%= link_to 'Back', brands_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+<div class="form-actions">
+  <%= link_to 'Editar', edit_brand_path(@brand), :class => "btn" %> <%= link_to 'Regresar', brands_path, :class => "btn" %>
+</div> 

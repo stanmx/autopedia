@@ -1,6 +1,9 @@
-<h1>Editing brand</h1>
+<div class="page-header">
+  <h2>Editar Marca</h2>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @brand %> |
-<%= link_to 'Back', brands_path %>
+<div class="form-actions">
+  <%= link_to 'Mostrar', @brand, :class => "btn" %> <%= link_to 'Regresar', brands_path, :class => "btn" %>
+</div>

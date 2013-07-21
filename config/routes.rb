@@ -26,7 +26,7 @@ Autopedia::Application.routes.draw do
   resources :categories
 
 
-  root :to => 'control#index'
+  root :to => 'controls#index'
 
   resources :cars
 
@@ -36,7 +36,7 @@ Autopedia::Application.routes.draw do
 
   resources :countries
 
-  get "control/index"
+  get "controls/index" => 'controls#index'
 
   resources :models
 

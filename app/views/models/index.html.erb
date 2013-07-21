@@ -1,29 +1,34 @@
-<h1>Listing models</h1>
+<div class="page-header">
+  <h2>Lista de Modelos</h2>
+</div>
 
-<table>
+<table class="table table-bordered table-striped">
+  <thead>
   <tr>
-    <th>Brand</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Modelo</th>
+    <th>Marca</th>
+    <th>Descripción</th>
+    <th colspan="3">Acciones</th>
   </tr>
-
-<% @models.each do |model| %>
-  <tr>
-    <td><%= image_tag model.brand.logo.url(:thumb) %></td>
-    <td><%= model.brand.title %></td>
-    <td><%= model.title %></td>
-    <td><%= model.description %></td>
-    <td><%= link_to 'Show', model %></td>
-    <td><%= link_to 'Edit', edit_model_path(model) %></td>
-    <td><%= link_to 'Destroy', model, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  </thead>
+  <tbody>
+  <% if @models.empty? %>
+    <tr>
+      <td colspan="6">Aun sin Modelos.</td>
+    </tr>
+    <% else %>
+      <% @models.each do |model| %>
+      <tr>
+        <td><%= model.title %></td>
+        <td><%= model.brand.title %></td>
+        <td><%= model.description %></td>
+        <td><%= link_to 'Mostrar', model %></td>
+        <td><%= link_to 'Editar', edit_model_path(model) %></td>
+        <td><%= link_to 'Eliminar', model, :method => :delete, :data => { :confirm => '¿Estas seguro?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Model', new_model_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+<%= link_to 'Nuevo Modelo', new_model_path, :class => "btn btn-primary" %>

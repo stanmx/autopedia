@@ -1,6 +1,17 @@
-<h2><%= @video.title %></h2>    
+<div class="page-header">
+  <h2><%= @video.title %></h2>
+</div>   
+<p>
+	<b>Fecha de Publicación:</b>
+	<%= l @video.created_at, :formats => :long %>
+<p>
+	<b>Descripción:</b>
+	<%= @video.description %>
+</p>
 
-<h5><%= l @video.created_at, :formats => :long %></h5>
-<p><%= @video.description %></p>     
-<%= @video.video.html_safe %><br />
-<%= link_to 'Edit', edit_video_path(@video) %> | <%= link_to 'Back', videos_path %>
+<%= @video.video.html_safe %>
+
+<div class="form-actions">
+  <%= link_to 'Editar', edit_video_path(@video), :class => "btn" %>
+  <%= link_to 'Regresar', videos_path, :class => "btn" %>
+</div>

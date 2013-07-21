@@ -6,6 +6,8 @@ class Car < ActiveRecord::Base
   has_many :photos
   accepts_nested_attributes_for :photos, :allow_destroy => true
 
+  validates_presence_of :model_id, :city_id, :year, :status, :color, :interior, :transmission, :contact_name, :email, :phone
+
   def self.search(search)
     result = order('new DESC')
     result = joins(:model => :brand).where('brands.title LIKE ? OR models.title LIKE ? OR status LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%").order('new DESC') if search.present?

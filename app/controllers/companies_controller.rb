@@ -2,12 +2,10 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   before_filter :authenticate_user!
-
+  layout "application"
 
   def index
-    @companies = Company.search(params[:search])
-    @json = Company.search(params[:search]).to_gmaps4rails
-    @categories = Category.includes(:companies).all
+    @companies = Company.order('updated_at DESC')
 
 
     respond_to do |format|

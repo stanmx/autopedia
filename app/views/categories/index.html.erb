@@ -1,28 +1,35 @@
-<h1>Listing categories</h1>
+<div class="page-header">
+  <h2>Lista de Categorias</h2>
+</div>
 
-<table>
+<table class="table table-bordered table-striped">
+  <thead>
   <tr>
-    <th>Icon</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Icono</th>
+    <th>Titulo</th>
+    <th>Descripción</th>
+    <th colspan="3">Acciones</th>
   </tr>
-
-<% @categories.each do |category| %>
-  <tr>
-    <td><%= image_tag category.icon.url(:marker) %></td>
-    <td><%= category.title %></td>
-    <td><%= category.description %></td>
-    <td><%= link_to 'Show', category %></td>
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  </thead>
+  <tbody>
+  <% if @categories.empty? %>
+    <tr>
+      <td colspan="6">Aun sin Categorias.</td>
+    </tr>
+    <% else %>
+      <% @categories.each do |category| %>
+      <tr>
+        <td><%= image_tag category.icon.url(:marker), :class => "img-rounded" %></td>
+        <td><%= category.title %></td>
+        <td><%= category.description %></td>
+        <td><%= link_to 'Mostrar', category %></td>
+        <td><%= link_to 'Editar', edit_category_path(category) %></td>
+        <td><%= link_to 'Eliminar', category, :method => :delete, :data => { :confirm => '¿Estas seguro?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
+<%= link_to 'Nueva Categoria', new_category_path, :class => "btn btn-primary" %>
 
-<%= link_to 'New Category', new_category_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>

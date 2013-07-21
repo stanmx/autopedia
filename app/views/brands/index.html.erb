@@ -1,28 +1,33 @@
-<h1>Listing brands</h1>
+<div class="page-header">
+  <h2>Lista de Marcas</h2>
+</div>
 
-<table>
-  <tr>
-    <th>Logo</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @brands.each do |brand| %>
-  <tr>
-    <td><%= image_tag brand.logo.url(:thumb) %></td>
-    <td><%= brand.title %></td>
-    <td><%= brand.description %></td>
-    <td><%= link_to 'Show', brand %></td>
-    <td><%= link_to 'Edit', edit_brand_path(brand) %></td>
-    <td><%= link_to 'Destroy', brand, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Descripción</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @brands.empty? %>
+    <tr>
+      <td colspan="5">Aun sin Marcas.</td>
+    </tr>
+    <% else %>
+      <% @brands.each do |brand| %>
+      <tr>
+        <td><%= brand.title %></td>
+        <td><%= brand.description %></td>
+        <td><%= link_to 'Mostrar', brand %></td>
+        <td><%= link_to 'Editar', edit_brand_path(brand) %></td>
+        <td><%= link_to 'Eliminar', brand, :method => :delete, :data => { :confirm => '¿Estas seguro?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+  
 </table>
 
-<br />
-
-<%= link_to 'New Brand', new_brand_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+<%= link_to 'Nueva Marca', new_brand_path, :class => "btn btn-primary" %>

@@ -1,10 +1,26 @@
-<h2>Revista #<%= @magazine.number %></h2>
+<div class="page-header">
+  <h2>Revista #<%= @magazine.number %></h2>
+</div>
 
 <% for cover in @magazine.covers %> 
   <%= image_tag(cover.cover.url(:large), :alt => @magazine.title, :border => 0) %>
 <% end %>  
-<h4><%= @magazine.title %></h4>
-<p><%= @magazine.description %></p>
-<h5><%= link_to 'Descargar', @magazine.covers.first.cover.url(:original), :target => '_blank' %></h5>  
-<h5><%= link_to 'Back', magazines_path %></h5>
-<h5><%= link_to 'Edit', edit_magazine_path(@magazine) %></h5>
+
+<p>
+	<b>Titulo:</b>
+	<%= @magazine.title %>
+</p>
+
+<p>
+	<b>Descripción:</b>
+	<%= @magazine.description %>
+</p>
+
+<p>
+	<%= link_to 'Descargar', @magazine.covers.first.cover.url(:original), :target => '_blank' %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Regresar', magazines_path, :class => "btn" %>
+  <%= link_to 'Editar', edit_magazine_path(@magazine), :class => "btn" %>
+</div>

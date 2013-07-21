@@ -1,22 +1,19 @@
-<p id="notice"><%= notice %></p>
-
+<div class="page-header">
+  <h2><%= @category.title %></h2>
+</div>
 <p>
-  <b>Title:</b>
-  <%= @category.title %>
-</p>
-
-<p>
-  <b>Description:</b>
+  <b>Descripción:</b>
   <%= @category.description %>
 </p>
 
 <p>
-	<b>Icon:</b>
+	<b>Icono:</b>
 	<%= image_tag @category.icon.url %>
 	<%= image_tag @category.icon.url(:thumb) %>
 	<%= image_tag @category.icon.url(:marker) %>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+<div class="form-actions">
+  <%= link_to 'Editar', edit_category_path(@category), :class => "btn" %>
+  <%= link_to 'Regresar', categories_path, :class => "btn" %>
+</div>

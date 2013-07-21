@@ -15,4 +15,5 @@
 //= require jcarousellite_1.0.1
 //= require responsiveslides
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require_tree .

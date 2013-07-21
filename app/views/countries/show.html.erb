@@ -1,16 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h2><%= @country.title %></h2>
+</div>
 
 <p>
-  <b><%=t "country.title" %></b>
-  <%= @country.title %>
-</p>
-
-<p>
-  <b><%=t "country.description" %></b>
+  <b>Descripción</b>
   <%= @country.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_country_path(@country) %> |
-<%= link_to 'Back', countries_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+<div class="form-actions">
+  <%= link_to 'Editar', edit_country_path(@country), :class => "btn" %>
+  <%= link_to 'Regresar', countries_path, :class => "btn" %>
+</div>

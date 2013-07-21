@@ -1,37 +1,64 @@
-<h2><%= @company.name %></h2>
+<div class="page-header">
+  <h2><%= @company.name %></h2>
+</div>
 
-    <section>
-      <ul>
-        <% for picture in @company.pictures %> 
-        <li><%= image_tag picture.picture.url(:large), :alt => @company.name, :border => 0 %></li>
-        <% end %>  
-      </ul>
-    </section><!-- end /#bslide -->
+<p>
+  <b>Dirección:</b>
+  <%= @company.address %>
+</p>
 
-    <section>
-      <ul>
-        <li><span>Dirección:</span> <%= @company.address %></li>
-        <li><span>Ciudad:</span> <%= @company.city.title %></li>
-        <li><span>Garantía:</span> <%= humanize_bool(@company.warranty) %></li>
-        <li><span>Teléfono:</span> <%= @company.phone %></li>
-        <li><span>Horario:</span> <%= @company.schedule %></li>
-        <li><span>Correo Electrónico:</span> <%= @company.email %></li>
-        <li><span>Web:</span> <%= @company.web %></li>
-      </ul>
-    </section><!-- end /#details -->
+<p>
+  <b>Ciudad:</b>
+  <%= @company.city.title %>
+</p>
 
-    <section>
-      <h3>Acerca de...</h3>
-      <p><%= @company.about %></p>
-      <h3>Misión</h3>
-      <p><%= @company.mision %></p>
-      <h3>Visión</h3>
-      <p><%= @company.vision %></p>
-    </section><!-- end /#bdescription -->
+<p>
+  <b>Garantía:</b>
+  <%= humanize_value_bool(@company.warranty) %>
+</p>
 
-    <section>
-      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=220x220&sensor=false&zoom=16&markers=#{@company.latitude}%2C#{@company.longitude}" %>
-    </section><!-- end /#bmap -->
+<p>
+  <b>Teléfono:</b>
+  <%= @company.phone %>
+</p>
 
-     <%= link_to 'Edit', edit_company_path(@company) %> |
-    <%= link_to 'Back', companies_path %>
+<p>
+  <b>Horario:</b>
+  <%= @company.schedule %>
+</p>
+
+<p>
+  <b>Correo Electrónico:</b>
+  <%= @company.email %>
+</p>
+
+<p>
+  <b>Web:</b>
+  <%= @company.web %>
+</p>
+
+<p>
+  <b>Acerca de...</b>
+  <%= @company.about %>
+</p>
+
+<p>
+  <b>Misión:</b>
+  <%= @company.mision %>
+</p>
+
+<p>
+  <b>Visión:</b>
+  <%= @company.vision %>
+</p>
+
+<% for picture in @company.pictures %> 
+  <%= image_tag picture.picture.url(:large), :alt => @company.name, :border => 0 %></li>
+<% end %>  
+<br /><br />
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=940x220&sensor=false&zoom=16&markers=#{@company.latitude}%2C#{@company.longitude}" %>
+
+<div class="form-actions">
+  <%= link_to 'Editar', edit_company_path(@company), :class => "btn" %>
+  <%= link_to 'Regresar', companies_path, :class => "btn" %>
+</div>

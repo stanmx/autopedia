@@ -1,35 +1,87 @@
+<div class="page-header">
+  <h2><%= @car.year %> <%= @car.model.brand.title %> <%= @car.model.title %> (<%= humanize_car_bool(@car.new) %>)</h2>
+</div>
 
-      <h2><%= @car.year %> <%= @car.model.brand.title %> <%= @car.model.title %> (<%= humanize_car_bool(@car.new) %>)</h2>
-      <ul>
-        <li><span>Marca:</span> <%= @car.model.brand.title %></li>
-        <li><span>Modelo:</span> <%= @car.model.title %></li>
-        <li><span>Año:</span> <%= @car.year %></li>
-        <li><span>Exterior:</span> <%= @car.color %></li>
-        <li><span>Interior:</span> <%= @car.interior %></li>
-        <li><span>Transmisión:</span> <%= @car.transmission %></li>
-        <li><span>KM/Millas:</span>  <%= @car.km_miles %></li>
-        <li><span>Estatus:</span> <%= @car.status %></li>
-        <li><span>Precio:</span> <%= number_to_currency @car.price %> pesos</li>
-      </ul>
-      <h4>Contacto</h4>
-      <ul>
-        <li><span>Propietario:</span> <%= @car.contact_name %></li>
-        <li><span>Email:</span> <a title="Email" href="mailto:<%= @car.email %>"><%= @car.email %></a></li>
-        <li><span>Teléfono:</span> <%= @car.phone %></li>
-        <li><span>Radio:</span> <%= @car.radio %></li>
-        <li><span>Ubicación:</span> <%= @car.city.title %></li>
-      </ul>
-    </section><!-- end /#details -->
+<p>
+  <b>Marca:</b>
+  <%= @car.model.brand.title %>
+</p>
 
-    <%= @car.video.html_safe %>
+<p>
+  <b>Modelo:</b>
+  <%= @car.model.title %>
+</p>
 
-     <% for photo in @car.photos %> 
-    <div>
-      <%= link_to (image_tag photo.photo.url(:thumb), :alt => @car.model.title, :border => 0), photo.photo.url(:large), :class => 'zoom'  %>
-    </div><!--end -->  
-  <% end %>  
+<p>
+  <b>Año:</b>
+  <%= @car.year %>
+</p>
+  
+<p>
+  <b>Color:</b>
+  <%= @car.color %>
+</p>
 
-  <%= link_to 'Edit', edit_car_path(@car) %> |
-  <%= link_to 'Back', cars_path %>
+<p>
+  <b>Interior:</b>
+  <%= @car.interior %>
+</p>
 
+<p>
+  <b>Transmisión:</b>
+  <%= @car.transmission %>
+</p>
+
+<p>
+  <b>Kilometros Recorridos</b>
+  <%= @car.km_miles %>
+</p>
+
+<p>
+  <b>Estatus:</b>
+  <%= @car.status %>
+</p>
+
+<p>
+  <b>Precio:</b>
+  <%= number_to_currency @car.price %> pesos
+</p>
+
+<h4>Contacto</h4>
+
+<p>
+  <b>Propietario:</b>
+  <%= @car.contact_name %>
+</p>
+
+<p>
+  <b>Correo Eléctronico:</b>
+  <a title="Email" href="mailto:<%= @car.email %>"><%= @car.email %></a>
+</p>
+
+<p>
+  <b>Teléfono:</b>
+  <%= @car.phone %>
+</p>
+
+<p>
+  <b>Radio:</b>
+  <%= @car.radio %>
+</p>
+
+<p>
+  <b>Ubicación:</b>
+  <%= @car.city.title %>
+</p>
+
+<%= @car.video.html_safe %>
+<br />
+<% for photo in @car.photos %> 
+  <%= link_to (image_tag photo.photo.url(:thumb), :alt => @car.model.title, :border => 0), photo.photo.url(:large), :class => 'zoom'  %>
+<% end %>  
+
+<div class="form-actions">
+  <%= link_to 'Editar', edit_car_path(@car), :class => "btn" %>
+  <%= link_to 'Regresar', cars_path, :class => "btn" %>
+</div>
 

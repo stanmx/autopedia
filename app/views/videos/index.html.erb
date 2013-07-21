@@ -1,18 +1,36 @@
-<h2>TV</h2>
-    
-<% @videos.each do |video| %>
+<div class="page-header">
+  <h2>Lista de Episodios de TV</h2>
+</div>
 
-  <h3><%= video.title %></h3>
-  <h5><%= l video.created_at, :formats => :long %></h5>
-  <p><%= video.description %></p> 
-  <%= video.video.html_safe %><br />    
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Descripción</th>
+      <th>Video</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>    
+  <tbody>
+    <% if @videos.empty? %>
+    <tr>
+      <td colspan="6">Aun sin Episodios de TV.</td>
+    </tr>
+    <% else %>
+      <% @videos.each do |video| %>
+      <tr>
+      	<td><%= video.title %></td>
+    		<td><%= video.description %></td> 
+    		<td><%= video.video.html_safe %></td>   
+    		<td><%= link_to 'Mostrar', video %></td>
+    		<td><%= link_to 'Editar', edit_video_path(video) %></td>
+     		<td><%= link_to 'Eliminar', video, :method => :delete, :data => { :confirm => '¿Estas seguro?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
 
-   <%= link_to 'Show', video %> | <%= link_to 'Edit', edit_video_path(video) %> | <%= link_to 'Destroy', video, :method => :delete, :data => { :confirm => 'Are you sure?' } %><br />
-
-
-<% end %>
-
-
-<%= link_to 'New Video', new_video_path %>
+<%= link_to 'Nuevo Episodio de TV', new_video_path, :class => "btn btn-primary" %>
 
  

@@ -1,18 +1,38 @@
-<h2>Revistas</h2>
-    
-    <% @magazines.each do |magazine| %>
-      <section>
-        <%= image_tag magazine.covers.first.cover.url(:large) %>
-        <h3>Revista #<%= magazine.number %></h3>
-        <h4><%= magazine.title %></h4>
-        <p><%= magazine.description %></p>
-        <h5><%= link_to 'Descargar', magazine.covers.first.cover.url(:original), :target => '_blank' %></h5>  
-        <h5><%= link_to 'Show', magazine %></h5>
-        <h5><%= link_to 'Edit', edit_magazine_path(magazine) %></h5>
-        <h5><%= link_to 'Destroy', magazine, :method => :delete, :data => { :confirm => 'Are you sure?' } %></h5>
-      </section><!-- end /.magazine -->
-      <% end %>
-      <br />
+<div class="page-header">
+  <h2>Lista de Revistas</h2>
+</div>
 
-      <%= link_to 'New Magazine', new_magazine_path %>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Numero</th>
+      <th>Portada</th>
+      <th>Titulo</th>
+      <th>Descripción</th>
+      <th colspan="4">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @magazines.empty? %>
+    <tr>
+      <td colspan="8">Aun sin Revistas.</td>
+    </tr>
+    <% else %>
+      <% @magazines.each do |magazine| %>
+      <tr>
+        <td><%= magazine.number %></td>
+        <td><%= image_tag company.pictures.first.picture.url(:thumb), :class => "img-rounded" %></td>
+        <td><%= magazine.title %></td>
+        <td><%= truncate(magazine.description, :lenght => 160, :separator => ' ') %></td>
+        <td><%= link_to 'Descargar', magazine.covers.first.cover.url(:original), :target => '_blank' %></td>
+        <td><%= link_to 'Mostrar', magazine %></td>
+        <td><%= link_to 'Editar', edit_magazine_path(magazine) %></td>
+        <td><%= link_to 'Eliminar', magazine, :method => :delete, :data => { :confirm => '¿Estas seguro?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Nueva Revista', new_magazine_path, :class => "btn btn-primary" %>
       

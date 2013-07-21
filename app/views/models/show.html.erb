@@ -1,21 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h2><%= @model.title %></h2>
+</div>
 
 <p>
-  <b>Brand:</b>
+  <b>Marca:</b>
   <%= @model.brand.title %>
 </p>
 
 <p>
-  <b>Title:</b>
-  <%= @model.title %>
-</p>
-
-<p>
-  <b>Description:</b>
+  <b>Descripción:</b>
   <%= @model.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_model_path(@model) %> |
-<%= link_to 'Back', models_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+<div class="form-actions">
+  <%= link_to 'Editar', edit_model_path(@model), :class => "btn" %>
+  <%= link_to 'Regresar', models_path, :class => "btn" %>
+</div>

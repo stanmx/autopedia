@@ -6,6 +6,8 @@ class Company < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, :allow_destroy => true
   acts_as_gmappable
 
+  validates_presence_of :category_id, :city_id, :name, :address, :phone, :about
+
   def gmaps4rails_address
     "#{address}" 
   end

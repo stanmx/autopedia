@@ -1,8 +1,9 @@
 <%= form_for(@company, :html => { :multipart => true }) do |f| %>
   <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-block">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h4>
+      <br />
       <ul>
       <% @company.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,68 +11,72 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :category_id %><br />
+    <%= f.label 'Categoria' %>
     <%= f.collection_select :category_id, Category.all, :id, :title, { :prompt => true } %>
   </div>
   <div class="field">
-    <%= f.label :city_id %><br />
+    <%= f.label 'Ciudad' %>
     <%= f.collection_select :city_id, City.all, :id, :title, { :prompt => true } %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label 'Nombre' %>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :warranty %><br />
-    <%= f.check_box :warranty %>
+    <label class="checkbox inline">
+      <%= f.check_box :warranty %> Garantia
+    </label>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :address %><br />
+    <%= f.label 'Dirección' %>
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br />
+    <%= f.label 'Latitud' %>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label 'Longitud' %>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <label class="checkbox inline">
+      <%= f.check_box :gmaps %> Google Maps
+    </label>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label 'Teléfono' %>
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :schedule %><br />
+    <%= f.label 'Horario' %>
     <%= f.text_field :schedule %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label 'Correo Eléctronico' %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :web %><br />
+    <%= f.label 'Web' %>
     <%= f.text_field :web %>
   </div>
   <div class="field">
-    <%= f.label :about %><br />
-    <%= f.text_area :about %>
+    <%= f.label 'Acerca de...' %>
+    <%= f.text_area :about, :rows => 9 %>
   </div>
   <div class="field">
-    <%= f.label :mision %><br />
-    <%= f.text_area :mision %>
+    <%= f.label 'Misión' %>
+    <%= f.text_area :mision, :rows => 6 %>
   </div>
   <div class="field">
-    <%= f.label :vision %><br />
-    <%= f.text_area :vision %>
+    <%= f.label 'Visión' %>
+    <%= f.text_area :vision, :rows => 6 %>
   </div>
   <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
-  </div>
-   <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
-  </div>
-   <div class="field">
-    <%= f.label :gmaps %><br />
-    <%= f.check_box :gmaps %>
-  </div>
-  <div class="field">
+    <%= f.label 'Adjuntar Imagenes' %>
     <%= f.fields_for :pictures do |picture_fields| %>
        <% if picture_fields.object.new_record? %>
             <p>
@@ -88,8 +93,8 @@
             </p>
        <% end %> 
     <% end %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    </div>
+    <div class="actions">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
 <% end %>

@@ -1,8 +1,9 @@
 <%= form_for(@video) do |f| %>
   <% if @video.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-block">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4><%= pluralize(@video.errors.count, "error") %> no permite que este Episodio de TV sea creado:</h4>
+      <br />
       <ul>
       <% @video.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,20 +11,19 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label 'Titulo' %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :video %><br />
-    <%= f.text_area :video %>
+    <%= f.label 'Video (520x320)' %>
+    <%= f.text_area :video, :rows => 6 %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.label 'Descripción' %>
+    <%= f.text_area :description, :rows => 9 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-primary" %>
   </div>
 <% end %>

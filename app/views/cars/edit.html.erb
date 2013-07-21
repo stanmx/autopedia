@@ -1,6 +1,10 @@
-<h1>Editing car</h1>
+<div class="page-header">
+  <h2>Editar Auto</h2>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @car %> |
-<%= link_to 'Back', cars_path %>
+<div class="form-actions">
+  <%= link_to 'Mostrar', @car, :class => "btn" %>
+  <%= link_to 'Regresar', cars_path, :class => "btn" %>
+</div>

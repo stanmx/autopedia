@@ -1,6 +1,10 @@
-<h1>Editing magazine</h1>
+<div class="page-header">
+  <h2>Editar Revista</h2>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @magazine %> |
-<%= link_to 'Back', magazines_path %>
+<div class="form-actions">
+  <%= link_to 'Mostrar', @magazine, :class => "btn" %>
+  <%= link_to 'Regresar', magazines_path, :class => "btn" %>
+</div>

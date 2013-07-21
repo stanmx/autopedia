@@ -1,6 +1,10 @@
-<h1>Editing city</h1>
+<div class="page-header">
+  <h2>Editar Ciudad</h2>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @city %> |
-<%= link_to 'Back', cities_path %>
+<div class="form-actions">
+  <%= link_to 'Mostrar', @city, :class => "btn" %>
+  <%= link_to 'Regresar', cities_path, :class => "btn" %>
+</div>

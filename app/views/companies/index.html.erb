@@ -1,34 +1,43 @@
-<h2>Negocios</h2>
-<% @companies.each do |company| %>
-<table>
+<div class="page-header">
+  <h2>Lista de Negocios</h2>
+</div>
+
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Foto</th>
+      <th>Fotografía</th>
       <th>Categoría</th>
       <th>Nombre</th>
       <th>Garantía</th>
       <th>Acerca de...</th>
       <th>Ultima Actualización</th>
-      <th>Acciones</th>
+      <th colspan="3">Acciones</th>
     </tr>
   </thead>
   <tbody>
+    <% if @companies.empty? %>
     <tr>
-      <td><%= company.id %></td>
-      <td><%= image_tag company.pictures.first.picture.url(:thumb) %></td>
-      <td><%= company.category.title %></td>
-      <td><%= company.name %></td>
-      <td><%= humanize_bool(company.warranty) %></td>
-      <td><%= truncate(company.about, :lenght => 160, :separator => ' ') %></td>
-      <td><%= l company.updated_at, :format => :short %></td>
-      <td><%= link_to 'Show', company %> | <%= link_to 'Edit', edit_company_path(company) %> | <%= link_to 'Destroy', company, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+      <td colspan="9">Aun sin Negocios.</td>
     </tr>
+    <% else %>
+      <% @companies.each do |company| %>
+      <tr>
+        <td><%= image_tag company.pictures.first.picture.url(:thumb), :class => "img-rounded" %></td>
+        <td><%= company.category.title %></td>
+        <td><%= company.name %></td>
+        <td><%= humanize_value_bool(company.warranty) %></td>
+        <td><%= truncate(company.about, :lenght => 160, :separator => ' ') %></td>
+        <td><%= l company.updated_at, :format => :short %></td>
+        <td><%= link_to 'Mostrar', company %></td>
+        <td><%= link_to 'Editar', edit_company_path(company) %></td>
+        <td><%= link_to 'Eliminar', company, :method => :delete, :data => { :confirm => '¿Estas seguro?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
   </tbody>
 </table>
-<% end %>
 
-<%= link_to 'New Company', new_company_path %>
+<%= link_to 'Nuevo Negocio', new_company_path, :class => "btn btn-primary" %>
 
 
         

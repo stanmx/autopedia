@@ -1,28 +1,34 @@
-<h1>Listing states</h1>
+<div class="page-header">
+  <h2>Lista de Estados</h2>
+</div>
 
-<table>
-  <tr>
-    <th>Country</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @states.each do |state| %>
-  <tr>
-    <td><%= state.country.title %></td>
-    <td><%= state.title %></td>
-    <td><%= state.description %></td>
-    <td><%= link_to 'Show', state %></td>
-    <td><%= link_to 'Edit', edit_state_path(state) %></td>
-    <td><%= link_to 'Destroy', state, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Estado</th>
+      <th>Pais</th>
+      <th>Descripción</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if @states.empty? %>
+    <tr>
+      <td colspan="6">Aun sin Estados.</td>
+    </tr>
+    <% else %>
+      <% @states.each do |state| %>
+      <tr>
+        <td><%= state.title %></td>
+        <td><%= state.country.title %></td>
+        <td><%= state.description %></td>
+        <td><%= link_to 'Mostrar', state %></td>
+        <td><%= link_to 'Editar', edit_state_path(state) %></td>
+        <td><%= link_to 'Eliminar', state, :method => :delete, :data => { :confirm => '¿Estas seguro?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New State', new_state_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+<%= link_to 'Nuevo Estado', new_state_path, :class => "btn btn-primary" %>

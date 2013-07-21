@@ -1,6 +1,10 @@
-<h1>Editing model</h1>
+<div class="page-header">
+  <h2>Editar Modelo</h2>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @model %> |
-<%= link_to 'Back', models_path %>
+<div class="form-actions">
+  <%= link_to 'Mostrar', @model, :class => "btn" %>
+  <%= link_to 'Regresar', models_path, :class => "btn" %>
+</div>

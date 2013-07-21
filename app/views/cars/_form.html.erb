@@ -1,8 +1,9 @@
 <%= form_for(@car, :html => { :multipart => true }) do |f| %>
   <% if @car.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-block">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4><%= pluralize(@car.errors.count, "error") %> no permite que este Auto sea creado:</h4>
+      <br />
       <ul>
       <% @car.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,69 +11,73 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :model_id %><br />
+    <%= f.label 'Modelo' %>
     <%= f.collection_select :model_id, Model.all, :id, :title, { :prompt => true } %>
   </div>
   <div class="field">
-    <%= f.label :city_id %><br />
+    <%= f.label 'Ciudad' %>
     <%= f.collection_select :city_id, City.all, :id, :title, { :prompt => true } %>
   </div>
   <div class="field">
-    <%= f.label :year %><br />
+    <%= f.label 'Año' %>
     <%= f.text_field :year %>
   </div>
   <div class="field">
-    <%= f.label :status %><br />
+    <%= f.label 'Estatus' %>
     <%= f.text_field :status %>
   </div>
   <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
+    <%= f.label 'Precio' %>
+    <div class="input-prepend">
+      <span class="add-on">$</span>
+      <%= f.text_field :price %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :new %><br />
-    <%= f.check_box :new %>
+    <label class="checkbox inline">
+      <%= f.check_box :new %> ¿Nuevo?
+    </label>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :color %><br />
+    <%= f.label 'Color' %>
     <%= f.text_field :color %>
   </div>
   <div class="field">
-    <%= f.label :interior %><br />
+    <%= f.label 'Interior' %>
     <%= f.text_field :interior %>
   </div>
   <div class="field">
-    <%= f.label :transmission %><br />
+    <%= f.label 'Transmisión' %>
     <%= f.text_field :transmission %>
   </div>
   <div class="field">
-    <%= f.label :km_miles %><br />
+    <%= f.label 'Kilometros Recorridos' %>
     <%= f.text_field :km_miles %>
   </div>
   <div class="field">
-    <%= f.label :video %><br />
-    <%= f.text_area :video %>
+    <%= f.label 'Video' %>
+    <%= f.text_area :video, :rows => 6 %>
   </div>
-  <div class="field">
-    <%= f.label :contact_name %><br />
+  <div class="field"> 
+    <%= f.label 'Nombre de Contacto' %>
     <%= f.text_field :contact_name %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label 'Correo Eléctronico' %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br />
+    <%= f.label 'Teléfono' %>
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :radio %><br />
+    <%= f.label 'Radio' %>
     <%= f.text_field :radio %>
   </div>
-
   <div class="field">
+    <%= f.label 'Adjuntar imagenes' %>
     <%= f.fields_for :photos do |photo_fields| %>
          <% if photo_fields.object.new_record? %>
               <p>
@@ -91,6 +96,6 @@
     <% end %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-primary" %>
   </div>
 <% end %>

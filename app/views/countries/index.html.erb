@@ -1,47 +1,32 @@
-<h1><%=t "country.listing_countries" %></h1>
+<div class="page-header">
+  <h2>Lista de Paises</h2>
+</div>
 
-<table>
+<table class="table table-bordered table-striped">
+  <thead>
   <tr>
-    <th><%=t "country.title" %></th>
-    <th><%=t "country.description" %></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @countries.each do |country| %>
-  <tr>
-    <td><%= country.title %></td>
-    <td><%= country.description %></td>
-    <td><%= link_to 'Show', country %></td>
-    <td><%= link_to 'Edit', edit_country_path(country) %></td>
-    <td><%= link_to 'Destroy', country, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+      <th>Titulo</th>
+      <th>Descripción</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if @countries.empty? %>
+    <tr>
+      <td colspan="5">Aun sin Negocios.</td>
+    </tr>
+    <% else %>
+      <% @countries.each do |country| %>
+        <tr>
+          <td><%= country.title %></td>
+          <td><%= country.description %></td>
+          <td><%= link_to 'Mostrar', country %></td>
+          <td><%= link_to 'Editar', edit_country_path(country) %></td>
+          <td><%= link_to 'Eliminar', country, :method => :delete, :data => { :confirm => '¿Estas seguro?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Country', new_country_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
-
-<script>
-
-      $(function() {
-
-        //nav
-        $('#nav').find('> li').hover(function(){
-              $(this).find('ul')
-              .removeClass('noJS')
-              .stop(true, true).slideToggle('fast');
-          });
-
-          //topbanner
-          $(".rslides").responsiveSlides({
-              pager: true,
-              namespace: "transparent-btns"
-            });
-
-      });
-
-    </script>
+<%= link_to 'Nuevo Pais', new_country_path, :class => "btn btn-primary" %>

@@ -1,6 +1,10 @@
-<h1>Editing country</h1>
+<div class="page-header">
+  <h2>Editar Pais</h2>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @country %> |
-<%= link_to 'Back', countries_path %>
+<div class="form-actions">
+  <%= link_to 'Mostrar', @country, :class => "btn" %>
+  <%= link_to 'Regresar', countries_path, :class => "btn" %>
+</div>

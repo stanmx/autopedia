@@ -1,28 +1,34 @@
-<h1>Listing cities</h1>
+<div class="page-header">
+  <h2>Lista de Ciudades</h2>
+</div>
 
-<table>
-  <tr>
-    <th>State</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @cities.each do |city| %>
-  <tr>
-    <td><%= city.state.title %></td>
-    <td><%= city.title %></td>
-    <td><%= city.description %></td>
-    <td><%= link_to 'Show', city %></td>
-    <td><%= link_to 'Edit', edit_city_path(city) %></td>
-    <td><%= link_to 'Destroy', city, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Ciudad</th>
+      <th>Estado</th>
+      <th>Descripción</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if @cities.empty? %>
+    <tr>
+      <td colspan="6">Aun sin Ciudades.</td>
+    </tr>
+    <% else %>
+    <% @cities.each do |city| %>
+    <tr>
+      <td><%= city.title %></td>
+      <td><%= city.state.title %></td>
+      <td><%= city.description %></td>
+      <td><%= link_to 'Mostrar', city %></td>
+      <td><%= link_to 'Editar', edit_city_path(city) %></td>
+      <td><%= link_to 'Eliminar', city, :method => :delete, :data => { :confirm => '¿Estas seguro?' } %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New City', new_city_path %> | 
-<%= link_to 'Back to Controls', control_index_path %>
+<%= link_to 'Nueva Ciudad', new_city_path, :class => "btn btn-primary" %>

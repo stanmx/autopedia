@@ -1,0 +1,19 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+  .container {
+  	padding-bottom: 20px;
+  }
+
+  p.navbar-text {
+  	text-align: right;
+  }
+
+  .field_with_errors input, .field_with_errors select {
+    border: 1px solid #C2994B;
+  }

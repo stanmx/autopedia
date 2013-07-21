@@ -4,12 +4,10 @@ class CarsController < ApplicationController
 
   before_filter :authenticate_user!
 
+  layout "application"
+
   def index
-    @cars = Car.search(params[:search]).year(params[:fyear],params[:tyear]).price(params[:fprice],params[:tprice]).location(params[:fstate],params[:tcity])
-    @brands = Brand.joins(:models => :cars).all
-    @models = Model.joins(:cars).all
-    @status = Car.select('DISTINCT status')
-    @location = State.joins(:cities => :cars).all
+    @cars = Car.order('updated_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
