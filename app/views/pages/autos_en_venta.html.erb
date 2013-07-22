@@ -1,3 +1,4 @@
+<% title "Autos en venta" %>
 <div id="sitemap">
 
     <div class="center">
@@ -24,18 +25,9 @@
 
         <section id="brands">
             <h4>Marcas Destacadas</h4>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
-            <%= link_to image_tag('brands/vw.png', :alt => 'VW'), '#' %>
+            <% @brands.each do |brand| %>
+              <%= link_to image_tag(brand.logo(:small)), page_path("autos_en_venta", :search => brand.title) %>
+            <% end %>
         </section><!-- end /#brands -->
 
         <section id="introbanners">

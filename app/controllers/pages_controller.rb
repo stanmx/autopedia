@@ -8,8 +8,8 @@ class PagesController < ApplicationController
 
   def autos_en_venta
     @cars = Car.search(params[:search]).year(params[:fyear],params[:tyear]).price(params[:fprice],params[:tprice]).location(params[:fstate],params[:tcity])
-    @brands = Brand.joins(:models => :cars).all
-    @models = Model.joins(:cars).all
+    @brands = Brand.joins(:models => :cars).group(:title)
+    @models = Model.joins(:cars).group(:title)
     @status = Car.select('DISTINCT status')
     @location = State.joins(:cities => :cars).all
 

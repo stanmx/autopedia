@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es-MX">
 <head>
-  <title>Autopedia&reg;</title>
+  <title>Autopedia&reg; - <%= yield (:title) || "El portal especializado en automoviles" %></title>
   <%= stylesheet_link_tag    "frontend", :media => "all" %>
   <%= stylesheet_link_tag    "responsiveslides", :media => "all" %>
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Economica|Ubuntu">
@@ -9,9 +9,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
 <%= render 'shared/header' %>
 
 <%= yield %>

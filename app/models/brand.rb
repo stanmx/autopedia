@@ -8,8 +8,6 @@ class Brand < ActiveRecord::Base
   validates_presence_of :title
 
   #paperclip
-  has_attached_file :logo, 	:styles 		=> { :medium => "300x300>", 
-  												 :thumb => "100x100>" }#, 
-  							#:default_url 	=> "/images/:style/missing.png"
+  has_attached_file :logo, :styles => { :medium => "300x300#", :thumb => "100x100#", :small => "100x65#" }
 
 end

@@ -1,3 +1,4 @@
+<% title "Autos en venta" %>
 <div id="sitemap">
 
   <div class="center">
@@ -13,7 +14,15 @@
   <div id="introduction">
 
     <section id="video">
-      <%= @car.video.html_safe %>
+      <% if @car.video.empty? %>
+        <ul class="rslides">
+        <% for photo in @car.photos %> 
+          <li><%= link_to (image_tag photo.photo.url(:large), :alt => @car.model.title, :border => 0, :width => 520, :height => 320), photo.photo.url(:large), :class => 'zoom' %></li>
+        <% end %>
+        </ul>  
+      <% else %>
+        <%= @car.video.html_safe %>
+      <% end %>
     </section><!-- end /#video -->
 
     <section id="details">
@@ -39,11 +48,14 @@
       </ul>
     </section><!-- end /#details -->
 
-     <% for photo in @car.photos %> 
     <div class="photo">
-      <%= link_to (image_tag photo.photo.url(:thumb), :alt => @car.model.title, :border => 0), photo.photo.url(:large), :class => 'zoom'  %>
-    </div><!--end productphoto-->  
-  <% end %>  
+      <ul>
+      <% for photo in @car.photos %> 
+        <li><%= link_to (image_tag photo.photo.url(:thumb), :alt => @car.model.title, :border => 0), photo.photo.url(:large), :class => 'zoom'  %></li>
+      <% end %> 
+      </ul>
+    </div><!--end -->  
+   
 
   </div><!-- end /#introduction -->
 

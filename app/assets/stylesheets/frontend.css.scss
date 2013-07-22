@@ -201,10 +201,33 @@ body {
 
 			section#video {
 				float: left;
+				position: relative;
 				width: 520px;
 				height: 320px;
 				margin: 40px 10px 20px;
 			}
+
+			div.photo {
+			  clear: both;
+			  width: 940px;
+			  margin: 0 10px 20px;
+			  height: 80px;
+			}
+
+			  div.photo ul {
+			  	margin: 0;
+			  	padding: 0;
+			    list-style: none;
+			  }
+
+			    div.photo ul li {
+				  float: left;
+				  display: inline;
+				  margin-right: 10px;
+				  width: 80px;
+				  height: 80px;
+				  background-color: #eee;
+			    }
 
 			section#menu {
 				float: left;
