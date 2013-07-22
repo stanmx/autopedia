@@ -1,7 +1,7 @@
 <div id="sitemap">
 
   <div class="center">
-    <p>Inicio &rsaquo; TV</p>
+    <p>Inicio &rsaquo; TV &rsaquo; Episodio: <%= @video.title %></p>
   </div><!-- end /.center -->
 
 </div><!-- end /#sitemap -->
@@ -31,7 +31,7 @@
       <% @videos.each do |video| %>
       <section>
         <a title="Autopedia&reg; TV" href="<%= page_path("episodio/#{video.id}") %>">
-          <%= image_tag '160x100.jpg', :alt => 'video.title' %>
+          <%= image_tag '160x100.jpg', :alt => '160x100' %>
           <h5><%= video.title %></h5>
         </a>
       </section>

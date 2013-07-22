@@ -2,6 +2,9 @@ Autopedia::Application.routes.draw do
 
   devise_for :users, :path => 'users', :path_names => { :sign_in => 'login', :sign_out => 'logout'}
 
+  root :to => 'controls#index'
+  get "controls/index" => 'controls#index'
+
   get "/pages/inicio" => 'pages#inicio', :as => :page, :format => false
   get "/pages/autos_en_venta" => 'pages#autos_en_venta', :as => :page, :format => false
   get "/pages/autos_en_venta/:id" => 'pages#auto', :as => :page, :format => false
@@ -9,37 +12,23 @@ Autopedia::Application.routes.draw do
   get "/pages/directorio/:id" => 'pages#negocio', :as => :page, :format => false
   get "/pages/revista" => 'pages#revista', :as => :page, :format => false
   get "/pages/tv" => 'pages#tv', :as => :page, :format => false
-
+  get "/pages/episodio/:id" => 'pages#episodio', :as => :page, :format => false
   get "/pages/certificate" => 'pages#certificate', :as => :page, :format => false
   get "/pages/contacto" => 'pages#contacto', :as => :page, :format => false
   get "/pages/ubicacion" => 'pages#ubicacion', :as => :page, :format => false
+  get "/pages/poliza_de_legalidad" => 'pages#poliza_de_legalidad', :as => :page, :format => false
+  get "/pages/acerca_de_nosotros" => 'pages#acerca_de_nosotros', :as => :page, :format => false
+  get "/pages/publicidad" => 'pages#publicidad', :as => :page, :format => false
 
   resources :videos
-
-
   resources :magazines
-
-
   resources :companies
-
-
   resources :categories
-
-
-  root :to => 'controls#index'
-
   resources :cars
-
   resources :cities
-
   resources :states
-
   resources :countries
-
-  get "controls/index" => 'controls#index'
-
   resources :models
-
   resources :brands
 
 
