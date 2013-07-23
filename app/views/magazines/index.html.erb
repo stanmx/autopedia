@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Numero</th>
-      <th>Portada</th>
       <th>Titulo</th>
       <th>Descripción</th>
       <th colspan="4">Acciones</th>
@@ -21,7 +20,6 @@
       <% @magazines.each do |magazine| %>
       <tr>
         <td><%= magazine.number %></td>
-        <td><%= image_tag company.pictures.first.picture.url(:thumb), :class => "img-rounded" %></td>
         <td><%= magazine.title %></td>
         <td><%= truncate(magazine.description, :lenght => 160, :separator => ' ') %></td>
         <td><%= link_to 'Descargar', magazine.covers.first.cover.url(:original), :target => '_blank' %></td>

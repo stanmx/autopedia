@@ -1,4 +1,4 @@
-<%= form_for(@brand, :html => { :multipart => true }) do |f| %>
+<%= form_for(@brand, :html => { :multipart => true, :id => "fileupload" }) do |f| %>
   <% if @brand.errors.any? %>
     <div id="error_explanation" class="alert alert-block">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -20,14 +20,15 @@
     <%= f.text_area :description, :rows => 6 %>
   </div>
   <div class="field">
-    <%= f.label 'Adjuntar Logo' %>
-    <% if f.object.new_record? %>
-      <%= f.file_field :logo %>
-    <% elsif f.object.nil? %>
-      <%= f.file_field :logo %>
-    <% else %>
+    <% if @brand.logo? %>
       <%= link_to image_tag(f.object.logo.url(:thumb)), f.object.logo.url(:original) %>
-      <%= f.check_box :delete_logo %>
+      <%= f.check_box(:delete_logo) %>
+    <% else %>
+      <span class="btn btn-success fileinput-button">
+      <em class="icon-picture icon-white"></em>
+      <span>Adjuntar imagen...</span>
+        <%= f.file_field :logo %>
+      </span>
     <% end %>
   </div>
   <div class="actions">

@@ -35,11 +35,11 @@
 		<%= form_for page_path('autos_en_venta'), :method => :get do %>
 			<p>
 				<label>Mínimo</label>
-				<%= select_tag :fyear, options_for_select(Car.all.map &:year) %>
+				<%= select_tag :fyear, options_for_select(Car.order('year ASC').map {|u| [u.year.year, u.year]}) %>
 			</p>
 			<p>
 				<label>Máximo</label>
-				<%= select_tag :tyear, options_for_select(Car.all.map &:year) %>
+				<%= select_tag :tyear, options_for_select(Car.order('year DESC').map {|u| [u.year.year, u.year]}) %>
 			</p>
 			<p>
 				<%= submit_tag "Buscar", :name => nil %>

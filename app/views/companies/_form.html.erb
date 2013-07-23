@@ -75,26 +75,27 @@
     <%= f.label 'Visión' %>
     <%= f.text_area :vision, :rows => 6 %>
   </div>
-  <div class="field">
-    <%= f.label 'Adjuntar Imagenes' %>
+  <div class="field infile">
     <%= f.fields_for :pictures do |picture_fields| %>
-       <% if picture_fields.object.new_record? %>
-            <p>
-                 <%= picture_fields.file_field :picture %>
-            </p>
-       <% end %> 
+      <% if picture_fields.object.new_record? %>
+        <span class="btn btn-success fileinput-button">
+          <em class="icon-picture icon-white"></em>
+          <span>Adjuntar imagen...</span>  
+          <%= picture_fields.file_field :picture %>
+        </span>
+      <% end %> 
     <% end %>
 
     <%= f.fields_for :pictures do |picture_fields| %>
-       <% unless picture_fields.object.new_record? %>
-            <p>
-                 <%= link_to image_tag(picture_fields.object.picture.url(:thumb)), picture_fields.object.picture.url(:original) %>
-                 <%= picture_fields.check_box :_destroy %>
-            </p>
-       <% end %> 
+      <% unless picture_fields.object.new_record? %>
+        <p style="clear:both;">
+          <%= link_to image_tag(picture_fields.object.picture.url(:thumb)), picture_fields.object.picture.url(:original) %>
+          <%= picture_fields.check_box :_destroy %>
+        </p>
+      <% end %> 
     <% end %>
-    </div>
-    <div class="actions">
-      <%= f.submit :class => "btn btn-primary" %>
-    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
 <% end %>

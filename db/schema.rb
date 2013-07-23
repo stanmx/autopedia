@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719082916) do
+ActiveRecord::Schema.define(:version => 20130723115036) do
 
   create_table "brands", :force => true do |t|
     t.string   "title"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20130719082916) do
   create_table "cars", :force => true do |t|
     t.integer  "model_id"
     t.integer  "city_id"
-    t.integer  "year",         :limit => 4
+    t.date     "year",         :limit => 4
     t.string   "status"
     t.decimal  "price",                     :precision => 8, :scale => 2, :default => 0.0
     t.boolean  "new"

@@ -10,9 +10,12 @@
 
 <p>
 	<b>Logo:</b>
-	<%= image_tag @brand.logo.url %>
-	<%= image_tag @brand.logo.url(:medium) %>
+	<% if @brand.logo? %>
 	<%= image_tag @brand.logo.url(:thumb) %>
+	<%= image_tag @brand.logo.url(:small) %>
+	<% else %>
+		No hay imagen adjunta.
+	<% end %>
 </p>
 
 <div class="form-actions">

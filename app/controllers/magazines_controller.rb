@@ -27,7 +27,7 @@ class MagazinesController < ApplicationController
   # GET /magazines/new.json
   def new
     @magazine = Magazine.new
-    2.times { @magazine.covers.build }
+    @magazine.covers.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,7 +38,7 @@ class MagazinesController < ApplicationController
   # GET /magazines/1/edit
   def edit
     @magazine = Magazine.find(params[:id])
-    (2 - @magazine.covers.length).times { @magazine.covers.build } 
+    @magazine.covers.build 
   end
 
   # POST /magazines

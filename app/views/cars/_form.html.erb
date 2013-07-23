@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label 'Año' %>
-    <%= f.text_field :year %>
+    <%= f.date_select :year, { :start_year => Time.now.year, :end_year => 1950, :discard_day => true, :discard_month => true } %>
   </div>
   <div class="field">
     <%= f.label 'Estatus' %>
@@ -76,23 +76,24 @@
     <%= f.label 'Radio' %>
     <%= f.text_field :radio %>
   </div>
-  <div class="field">
-    <%= f.label 'Adjuntar imagenes' %>
+  <div class="field infile">
     <%= f.fields_for :photos do |photo_fields| %>
-         <% if photo_fields.object.new_record? %>
-              <p>
-                   <%= photo_fields.file_field :photo %>
-              </p>
-         <% end %> 
+      <% if photo_fields.object.new_record? %>
+        <span class="btn btn-success fileinput-button">
+          <em class="icon-picture icon-white"></em>
+          <span>Adjuntar imagen...</span>  
+          <%= photo_fields.file_field :photo %>
+        </span>
+      <% end %> 
     <% end %>
 
     <%= f.fields_for :photos do |photo_fields| %>
-         <% unless photo_fields.object.new_record? %>
-              <p>
-                   <%= link_to image_tag(photo_fields.object.photo.url(:thumb)), photo_fields.object.photo.url(:large) %>
-                   <%= photo_fields.check_box :_destroy %>
-              </p>
-         <% end %> 
+      <% unless photo_fields.object.new_record? %>
+        <p style="clear:both;">
+          <%= link_to image_tag(photo_fields.object.photo.url(:thumb)), photo_fields.object.photo.url(:large) %>
+          <%= photo_fields.check_box :_destroy %>
+        </p>
+      <% end %> 
     <% end %>
   </div>
   <div class="actions">

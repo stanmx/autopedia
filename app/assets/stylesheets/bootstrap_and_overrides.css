@@ -17,3 +17,12 @@
   .field_with_errors input, .field_with_errors select {
     border: 1px solid #C2994B;
   }
+
+  .fileinput-button, .infile {
+    margin-bottom: 10px;
+    clear: both;
+  }
+
+  div.actions {
+    clear: both;
+  }

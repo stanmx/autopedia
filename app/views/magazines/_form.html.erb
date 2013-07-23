@@ -24,23 +24,24 @@
     <%= f.label 'Descripción' %>
     <%= f.text_area :description, :rows => 9 %>
   </div>
-  <div class="field">
-    <%= f.label 'Adjuntar Revista (PDF)' %>
+  <div class="field infile">
     <%= f.fields_for :covers do |cover_fields| %>
-         <% if cover_fields.object.new_record? %>
-              <p>
-                   <%= cover_fields.file_field :cover %>
-              </p>
-         <% end %> 
+      <% if cover_fields.object.new_record? %>
+        <span class="btn btn-success fileinput-button">
+          <em class="icon-file icon-white"></em>
+          <span> Adjuntar documento PDF ...</span> 
+          <%=cover_fields.file_field :cover %>
+        </span>
+      <% end %> 
     <% end %>
 
     <%= f.fields_for :covers do |cover_fields| %>
-         <% unless cover_fields.object.new_record? %>
-              <p>
-                   <%= link_to image_tag(cover_fields.object.cover.url(:large)), cover_fields.object.cover.url(:original) %>
-                   <%= cover_fields.check_box :_destroy %>
-              </p>
-         <% end %> 
+      <% unless cover_fields.object.new_record? %>
+        <p style="clear:both;">
+          <%= link_to image_tag(cover_fields.object.cover.url(:large)), cover_fields.object.cover.url(:original) %>
+          <%= cover_fields.check_box :_destroy %>
+        </p>
+      <% end %> 
     <% end %>
   </div>
   <div class="actions">

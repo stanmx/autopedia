@@ -31,6 +31,7 @@ group :assets do
 
   #twitter bootstrap
   gem "twitter-bootstrap-rails"
+  gem "jquery-fileupload-rails"
   
 end
 

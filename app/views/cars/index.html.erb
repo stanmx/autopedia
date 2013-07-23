@@ -27,7 +27,7 @@
       <tr>
         <td><%= car.id %></td>
         <td><%= image_tag car.photos.first.photo.url(:thumb), :class => "img-rounded" %></td>
-        <td><%= car.year %></td>
+        <td><%= car.year.year %></td>
         <td><%= car.model.brand.title %>/<%= car.model.title %></td>
         <td><%= car.transmission %></td>
         <td><%= car.status %></td>

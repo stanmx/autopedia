@@ -8,9 +8,12 @@
 
 <p>
 	<b>Icono:</b>
-	<%= image_tag @category.icon.url %>
+	<% if @category.icon? %>
 	<%= image_tag @category.icon.url(:thumb) %>
 	<%= image_tag @category.icon.url(:marker) %>
+	<% else %>
+		No hay imagen adjunta.
+	<% end %>
 </p>
 
 <div class="form-actions">

@@ -2,7 +2,7 @@
 <div id="sitemap">
 
   <div class="center">
-    <p>Inicio &rsaquo; Autos en Venta &rsaquo; <%= @car.year %> <%= @car.model.brand.title %> <%= @car.model.title %></p>
+    <p>Inicio &rsaquo; Autos en Venta &rsaquo; <%= @car.year.year %> <%= @car.model.brand.title %> <%= @car.model.title %></p>
   </div><!-- end /.center -->
 
 </div><!-- end /#sitemap -->
@@ -26,11 +26,11 @@
     </section><!-- end /#video -->
 
     <section id="details">
-      <h2><%= @car.year %> <%= @car.model.brand.title %> <%= @car.model.title %> (<%= humanize_car_bool(@car.new) %>)</h2>
+      <h2><%= @car.year.year %> <%= @car.model.brand.title %> <%= @car.model.title %> (<%= humanize_car_bool(@car.new) %>)</h2>
       <ul>
         <li><span>Marca:</span> <%= @car.model.brand.title %></li>
         <li class="two"><span>Modelo:</span> <%= @car.model.title %></li>
-        <li><span>Año:</span> <%= @car.year %></li>
+        <li><span>Año:</span> <%= @car.year.year %></li>
         <li class="two"><span>Exterior:</span> <%= @car.color %></li>
         <li><span>Interior:</span> <%= @car.interior %></li>
         <li class="two"><span>Transmisión:</span> <%= @car.transmission %></li>
