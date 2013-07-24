@@ -14,7 +14,18 @@ Autopedia::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address =>              'mail.domain.cc',
+    :port =>                  587,
+    :domain =>               'domain.cc',
+    :user_name =>            'me@domain.cc',
+    :password =>             'mypassword',
+    :authentication =>        :login,
+    :openssl_verify_mode =>   OpenSSL::SSL::VERIFY_NONE,
+    :enable_starttls_auto =>  false
+  }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

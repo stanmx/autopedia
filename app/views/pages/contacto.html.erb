@@ -13,33 +13,37 @@
 
 		<h2>Contacto Autopedia&reg;</h2>
 		<h4>Para mantenerte en contacto y recibir las mejores promociones que Autopedia.mx tiene para ti, llena el siguiente formulario y en breve nos pondremos en contacto para responder tus preguntas o comentarios.</h4>
-	
+
+		<% if flash[:notice] %>
+    		<div class="notice"><%= flash[:notice] %></div>
+  		<% end %>
+
 		<section id="contact">
-			<form>
+			<%= form_for @message, :url => page_path("contacto"), :method => :post do |form| %>
 				<fieldset>
 					<p>
-						<label>Nombre</label>
-						<input type="text" class="input300" />
+						<%= form.label 'Nombre' %>
+      					<%= form.text_field :name, :class => 'input300' %>
 					</p>
 					<p>
-						<label>Teléfono</label>
-						<input type="text" class="input300" />
+						<%= form.label 'Teléfono' %>
+      					<%= form.text_field :phone, :class => 'input300' %>
 					</p>
 					<p>
-						<label>Correo Electrónico</label>
-						<input type="text" class="input300" />
+						<%= form.label 'Correo Eléctronico' %>
+      					<%= form.text_field :email, :class => 'input300' %>
 					</p>
 				</fieldset>
 				<fieldset>
 					<p>
-						<label>Mensaje</label>
-						<textarea></textarea>
+						<%= form.label 'Mensaje' %>
+      					<%= form.text_area :body %>
 					</p>
 				</fieldset>
 				<p>
-					<input type="submit" value="Enviar" class="inputsubmit" />
+					<%= form.submit "Enviar", :class => 'inputsubmit' %>
 				</p>
-			</form>
+			<% end %>
 		</section><!-- end /#contact -->
 
 	</div><!-- end /#text -->

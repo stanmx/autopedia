@@ -2,22 +2,37 @@ Autopedia::Application.routes.draw do
 
   resources :banners
 
-
   devise_for :users, :path => 'users', :path_names => { :sign_in => 'login', :sign_out => 'logout'}
 
-  root :to => 'controls#index'
-  get "controls/index" => 'controls#index'
+  root :to => 'pages#inicio'
+
+  get "controls/" => 'controls#index'
+
+  match '/pages/inicio' => 'pages#inicio', :as => 'inicio', :via => :get
+  match '/pages/inicio' => 'pages#inicio_send', :as => 'inicio', :via => :post
 
   get "/pages/inicio" => 'pages#inicio', :as => :page, :format => false
-  get "/pages/autos_en_venta" => 'pages#autos_en_venta', :as => :page, :format => false
-  get "/pages/autos_en_venta/:id" => 'pages#auto', :as => :page, :format => false
+ 
+  match "/pages/autos_en_venta" => 'pages#autos_en_venta', :as => 'autos_en_venta', :via => :get
+  match "/pages/autos_en_venta" => 'pages#autos_en_venta_send', :as => 'autos_en_venta', :via => :post
+
+  match "/pages/autos_en_venta/:id" => 'pages#auto', :as => :page, :via => :get
+  match "/pages/autos_en_venta/:id" => 'pages#auto_send', :as => :page, :via => :post
+ 
   get "/pages/directorio" => 'pages#directorio', :as => :page, :format => false
   get "/pages/directorio/:id" => 'pages#negocio', :as => :page, :format => false
+ 
   get "/pages/revista" => 'pages#revista', :as => :page, :format => false
+ 
   get "/pages/tv" => 'pages#tv', :as => :page, :format => false
   get "/pages/episodio/:id" => 'pages#episodio', :as => :page, :format => false
-  get "/pages/certificate" => 'pages#certificate', :as => :page, :format => false
-  get "/pages/contacto" => 'pages#contacto', :as => :page, :format => false
+ 
+  match '/pages/certificate' => 'pages#certificate', :as => 'certificate', :via => :get
+  match '/pages/certificate' => 'pages#certification_send', :as => 'certificate', :via => :post
+ 
+  match '/pages/contacto' => 'pages#contacto', :as => 'contacto', :via => :get
+  match '/pages/contacto' => 'pages#create', :as => 'contacto', :via => :post
+ 
   get "/pages/ubicacion" => 'pages#ubicacion', :as => :page, :format => false
   get "/pages/poliza_de_legalidad" => 'pages#poliza_de_legalidad', :as => :page, :format => false
   get "/pages/acerca_de_nosotros" => 'pages#acerca_de_nosotros', :as => :page, :format => false

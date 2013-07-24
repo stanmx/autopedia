@@ -16,12 +16,15 @@
 		<section>
 			<h3>¿Te gustaría que tus clientes califican tu negocio?</h3>
 			<h4>El sello de certificación Autopedia.mx estará disponible próximamente, y se ofrecerá a nuestros clientes Premium como un valor agregado que les dará la posibilidad de ser identificados fácilmente por sus consumidores.</h4>
-			<form class="notificame">
+			<% if flash[:notice] %>
+    			<div class="notice"><%= flash[:notice] %></div>
+  			<% end %>
+			<%= form_for @certification, :url => page_path("certificate"), :method => :post, :class => "notificame" do |form| %>
 				<p>
-					<input type="text" placeholder="Ingresa tu correo electrónico" class="inputmail" />
-					<input type="submit" value="Notifícame" class="inputnotification" />
+      				<%= form.text_field :email, :class => 'inputmail', :placeholder => 'Ingresa tu correo electrónico' %>
+					<%= form.submit "Notifícame", :class => 'inputnotification' %>
 				</p>
-			</form>
+			<% end %>
 			<p>Para mantenerte al pendiente de cuando y como obtener este beneficio, suscríbete en la casilla de “notifícame”. Tan pronto este disponible nuestro programa de certificación te haremos llegar una invitación gratuita para que formes parte de este programa.</p>
 		</section>
 		<section>

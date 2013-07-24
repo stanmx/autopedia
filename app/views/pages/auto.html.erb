@@ -9,8 +9,6 @@
 
 <div id="content">
 
-  <p id="notice"><%= notice %></p>
-
   <div id="introduction">
 
     <section id="video">
@@ -59,7 +57,23 @@
 
   </div><!-- end /#introduction -->
 
-  <%= render 'shared/newsletter' %>
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+    <div id="newsletter">
+    <ul>
+        <li>Siguenos para mantenerte al tanto de nuestras promociones</li>
+        <li>
+            <%= form_for @newsletter, :url => page_path("autos_en_venta/#{@car.id}"), :method => :post do |form| %>
+                <%= form.text_field :email, :class => 'search', :placeholder => 'Correo electrónico' %>
+                <%= form.submit "Suscribete", :class => 'submit' %>
+            <% end %>
+        </li>
+        <li><%= link_to image_tag('facebook-icon.png', :alt => 'Autopedia&reg; en Facebook'), '#', :target => '_blank' %></li>
+        <li><%= link_to image_tag('twitter-icon.png', :alt => 'Autopedia&reg; en Twitter'), '#', :target => '_blank' %></li>
+        <li><%= link_to image_tag('youtube-icon.png', :alt => 'Autopedia&reg; en YouTube'), '#', :target => '_blank' %></li>
+    </ul>
+    </div><!-- end /#newsletter -->
 
   <%= render 'shared/middlebanners' %>
 
@@ -77,7 +91,7 @@
     <div class="result <%= 'newtrue' if car.new == true %> <%= 'newfalse' if car.new == false %>">
         <a title="<%= car.model.title %>" href="<%= page_path("autos_en_venta/#{car.id}") %>">
             <%= image_tag car.photos.first.photo.url(:thumb) %>
-            <h3><%= car.year %> <%= car.model.brand.title %> <%= car.model.title %> <span>ID <%= car.id %></span> <span><%= number_to_currency car.price %> <abbr title="Moneda Nacional">M.N.</abbr></span> <span><%= humanize_car_bool(car.new) %></span> <span><%= l car.updated_at, :format => :short %></span></h3>
+            <h3><%= car.year.year %> <%= car.model.brand.title %> <%= car.model.title %> <span>ID <%= car.id %></span> <span><%= number_to_currency car.price %> <abbr title="Moneda Nacional">M.N.</abbr></span> <span><%= humanize_car_bool(car.new) %></span> <span><%= l car.updated_at, :format => :short %></span></h3>
             <p>Estatus: <%= car.status %>, Color: <%= car.color %>, Interior: <%= car.interior %>, Transmisión: <%= car.transmission %>, Kilometraje: <%= car.km_miles %>...</p>
             <h5><%= car.photos.count %></h5>
         </a>
