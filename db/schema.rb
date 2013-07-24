@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723115036) do
+ActiveRecord::Schema.define(:version => 20130723162159) do
+
+  create_table "banners", :force => true do |t|
+    t.string   "section"
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "brands", :force => true do |t|
     t.string   "title"
@@ -133,6 +141,17 @@ ActiveRecord::Schema.define(:version => 20130723115036) do
     t.integer  "company_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+  end
+
+  create_table "promotions", :force => true do |t|
+    t.string   "promotion_file_name"
+    t.string   "promotion_content_type"
+    t.integer  "promotion_file_size"
+    t.datetime "promotion_updated_at"
+    t.integer  "banner_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.string   "address"
   end
 
   create_table "states", :force => true do |t|

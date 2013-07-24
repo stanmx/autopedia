@@ -25,8 +25,11 @@
 
 		<div id="bottombanner">
 			<ul class="rslides">
-				<li><%= link_to image_tag('940x100.jpg', :alt => '940x100'), '#', :target => '_blank' %></li>
-				<li><%= link_to image_tag('940x100two.jpg', :alt => '940x100'), '#', :target => '_blank' %></li>
+				<% Banner.find_by_width_and_height(940,100) do |b| %>
+			    	<% b.promotions.each do |p| %>
+				  		<li><%= link_to image_tag(p.promotion.url(:original)), p.address %></li>
+					<% end %>
+		      	<% end %>
 			</ul>
 		</div><!-- end /.bottombanner -->
 

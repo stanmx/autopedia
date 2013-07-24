@@ -1,0 +1,9 @@
+<fieldset class="form-inline">
+  <span class="btn btn-success fileinput-button">
+  	<em class="icon-plus icon-white"></em>
+    <span>Adjuntar Banner...</span>  
+  	<%= f.file_field :promotion %>
+  </span>
+  <%= f.text_field :address, :placeholder => "http://" %>
+  <%= link_to "Eliminar", '#', :class => "remove_fields btn btn-danger" %>
+</fieldset>  

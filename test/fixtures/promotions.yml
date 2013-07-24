@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  promotion_file_name: MyString
+  promotion_content_type: MyString
+  promotion_file_size: 1
+  promotion_updated_at: 2013-07-23 07:08:39
+  banner_id: 1
+
+two:
+  promotion_file_name: MyString
+  promotion_content_type: MyString
+  promotion_file_size: 1
+  promotion_updated_at: 2013-07-23 07:08:39
+  banner_id: 1

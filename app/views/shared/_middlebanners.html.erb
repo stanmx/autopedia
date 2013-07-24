@@ -1,0 +1,9 @@
+<div id="middlebanners">
+    <ul>
+      <% Banner.find_by_width_and_height(460,100) do |b| %>
+          <% b.promotions.each do |p| %>
+          <li><%= link_to image_tag(p.promotion.url(:original)), p.address %></li>
+        <% end %>
+      <% end %>
+    </ul>
+</div><!-- end /#middlebanners -->

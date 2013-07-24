@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h2>Banner de <%= @banner.section %></h2>
+</div>
+
+<p>
+  <b>Width:</b>
+  <%= @banner.width %> pixeles
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @banner.height %> pixeles
+</p>
+
+<p>
+<% for promotion in @banner.promotions %> 
+  <%= image_tag promotion.promotion.url(:original) %><br />
+  <%= promotion.address %>
+  <br /><br />
+<% end %>  
+</p>
+<div class="form-actions">
+  <%= link_to 'Editar', edit_banner_path(@banner), :class => "btn" %>
+  <%= link_to 'Regresar', banners_path, :class => "btn" %>
+</div>

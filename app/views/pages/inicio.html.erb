@@ -18,29 +18,29 @@
 		<section id="introbanners">
 			<section>
 				<ul class="rslides">
-					<li><%= link_to image_tag('450x150.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
-					<li><%= link_to image_tag('450x150two.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
+					<% Banner.find_by_width_and_height_and_section(450,150,'introduccion_01') do |b| %>
+			    		<% b.promotions.each do |p| %>
+				  			<li><%= link_to image_tag(p.promotion.url(:original)), p.address %></li>
+						<% end %>
+		      		<% end %>
 				</ul>
 			</section>
 			<section>
 				<ul class="rslides">
-					<li><%= link_to image_tag('450x150.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
-					<li><%= link_to image_tag('450x150two.jpg', :alt => '450x150'), '#', :target => '_blank' %></li>
-				</ul>
+					<% Banner.find_by_width_and_height_and_section(450,150,'introduccion_02') do |b| %>
+			    		<% b.promotions.each do |p| %>
+				  			<li><%= link_to image_tag(p.promotion.url(:original)), p.address %></li>
+						<% end %>
+		      		<% end %>
 			</section>
 		</section><!-- end /#introbanners -->
 
 	</div><!-- end /#introduction -->
 
-	<?php include("shared/newsletter.php"); ?>
+	<%= render 'shared/newsletter' %>
 
-	<div id="middlebanners">
-		<ul>
-			<li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
-			<li><%= link_to image_tag('460x100.jpg', :alt => '460x100'), '#', :target => '_blank' %></li>
-		</ul>
-	</div><!-- end /#middlebanners -->
-
+	<%= render 'shared/middlebanners' %>
+	
 	<div id="text">
 
 		<h2>Autopedia.mx</h2>

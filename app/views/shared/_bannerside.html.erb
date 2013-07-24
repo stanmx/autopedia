@@ -1,3 +1,7 @@
 <div id="bannerside">
-	<%= link_to image_tag('220x320.jpg', :alt => '220x320'), '#', :target => '_blank' %>
+	<% Banner.find_by_width_and_height(220,320) do |b| %>
+		<% b.promotions.each do |p| %>
+			<li><%= link_to image_tag(p.promotion.url(:original)), p.address %></li>
+		<% end %>
+	<% end %>
 </div><!-- end /#bannerside -->

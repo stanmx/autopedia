@@ -1,5 +1,8 @@
 Autopedia::Application.routes.draw do
 
+  resources :banners
+
+
   devise_for :users, :path => 'users', :path_names => { :sign_in => 'login', :sign_out => 'logout'}
 
   root :to => 'controls#index'

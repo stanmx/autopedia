@@ -16,5 +16,26 @@
 <%= render 'shared/additionals' %>
 <%= render 'shared/footer' %>
 
+		<script>
+
+			$(function() {
+
+				//nav
+				$('#nav').find('> li').hover(function(){
+        			$(this).find('ul')
+        			.removeClass('noJS')
+        			.stop(true, true).slideToggle('fast');
+    			});
+
+			    //topbanner
+			    $(".rslides").responsiveSlides({
+			        pager: true,
+        			namespace: "transparent-btns"
+      			});
+
+			});
+
+		</script>
+
 </body>
 </html>

@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h2>Lista de Banners</h2>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Sección</th>
+      <th>Promociones</th>
+      <th>Width</th>
+      <th>Height</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @banners.empty? %>
+    <tr>
+      <td colspan="7">Aun sin Banners.</td>
+    </tr>
+    <% else %>
+      <% @banners.each do |banner| %>
+      <tr>
+        <td><%= banner.section %></td>
+        <td><%= banner.promotions.count %></td>
+        <td><%= banner.width %> pixeles</td>
+        <td><%= banner.height %> pixeles</td>
+        <td><%= link_to 'Mostrar', banner %></td>
+        <td><%= link_to 'Editar', edit_banner_path(banner) %></td>
+        <td><%= link_to 'Eliminar', banner, :method => :delete, :data => { :confirm => '¿Estas seguro?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Banner', new_banner_path, :class => "btn btn-primary" %>
